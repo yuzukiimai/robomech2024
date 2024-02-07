@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1707333253 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1707333253
-  "out/template_robomech.dvi" 1707333253 8772 ea3e786d3ff873398efd33edb7cf8150 "latex"
+["dvipdf"] 1707334511 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1707334512
+  "out/template_robomech.dvi" 1707334511 9648 87beec21a0d246e87477e1cbe521f56c "latex"
   (generated)
   "out/template_robomech.pdf"
-["latex"] 1707333253 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1707333253
+["latex"] 1707334511 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1707334512
   "/etc/texmf/web2c/texmf.cnf" 1670335848 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/yuzuki/robomech2024/template_robomech.tex" 1707333252 6496 bf9867f4ede098699c1a0a6b69778c5d ""
+  "/home/yuzuki/robomech2024/template_robomech.tex" 1707334511 7093 4fa79b774e536b1d9315b5a2f5c5483e ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/ptex-fonts/standard/goth10.tfm" 1463434352 1196 5981e79c37b2cfd27b3612a6783cd4b6 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/ptex-fonts/standard/goth9.tfm" 1463434352 1196 b274fc006918dea9e5263e2117f4bddb ""
@@ -44,10 +44,10 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/web2c/eptex/platex.fmt" 1685482454 10599210 9de339245e37a93177f0434a6b11323f ""
-  "out/template_robomech.aux" 1707333253 720 364c4dd57563b5af25333d4e898c6235 "latex"
+  "out/template_robomech.aux" 1707334511 754 a8a40ffc336883ee19c4ab91f4b4ad39 "latex"
   "robomech.sty" 1707286410 10293 8982dbc33bdad8ecf621cef65d449943 ""
-  "template_robomech.tex" 1707333252 6496 bf9867f4ede098699c1a0a6b69778c5d ""
+  "template_robomech.tex" 1707334511 7093 4fa79b774e536b1d9315b5a2f5c5483e ""
   (generated)
-  "out/template_robomech.aux"
   "out/template_robomech.log"
+  "out/template_robomech.aux"
   "out/template_robomech.dvi"
