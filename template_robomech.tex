@@ -3,12 +3,13 @@
 \usepackage{graphicx}
 
 %追加
-% \usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
+\usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
 % \usepackage[dvipdfmx]{graphicx}
 \usepackage{subcaption}
 \captionsetup[figure]{justification=centering}
 \captionsetup[table]{justification=centering}
 \usepackage[ipa]{pxchfon}
+\usepackage{otf}
 % \usepackage[dvipdfmx,setpagesize=false]{hyperref}
 
 
@@ -69,8 +70,13 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
 する行動を収集できるため，経路追従の継続に有効である\cite{imai}などの利点がある．\\
 \hspace*{1zw}ここで，従来手法はオンラインで学習する．つまり，データセットの収集と学習をするためには，
 ロボットを常に走行させる必要がある．これは実験者の作業の負担が大きく問題となっている．したがって，
-学習を効率化し，実験に要する時間を短縮することが望まれる．\\
-\hspace*{1zw}本稿では，
+学習を効率化し，実験に要する時間を短縮することが望まれる．なお，訓練時間の短縮手法は，
+これまでに本研究グループでもいくつか提案されている．例えば，藤原らは，オーバーサンプリングすることで
+データの不均衡を改善し，訓練時間の短縮を図った\cite{fuji}．また，\CID{8705}橋らは，データセットを事前に
+収集してオフラインで学習することで訓練時間を短縮した\cite{takahashi}．
+さらに，今井らは，学習器の出力が教師データに近づいたら訓練を打ち切る手法を提案し，結果的に
+訓練時間の短縮に繋がった\cite{imai2}．いずれも訓練時間の短縮に成功しているが，これらの研究はすべてアプローチが
+異なる．
 
 
 \section{従来手法\protect\\}
@@ -127,6 +133,21 @@ Bojarski, Mariusz, \textit{et al}.,
 ー経路への復帰行動の解析と復帰
 行動を強化する教師データ収集法の検討ー . 日本機械学会ロボティクス・メカトロニクス
 講演会 ’23 予稿集 , 2P2-G05(2023).
+
+\bibitem{fuji}
+藤原柾，春山健太，馬場琉生，上田隆一，林原靖男，"視覚と行動のend-to-end 学習により経路追従行動を
+オンラインで模倣する手法の提案　実環境における経路選択機能の検証と学習時間の短縮化の検討"
+，日本機械学会ロボティクス・メカトロニクス講演会'23予稿集，2P2-G06(2023)
+
+
+\bibitem{takahashi}
+\CID{8705}橋祐樹，白須和暉，藤原柾，上田隆一，林原靖男，"視覚と行動のend-to-end 学習による経路追従行動の模倣"，
+日本機械学会ロボティクス・メカトロニクス講演会'23予稿集，2P1-G07(2023)
+
+\bibitem{imai2}
+今井 悠月、落合 拓海、白須 和暉、上田 隆一、林原 靖男，”視覚と行動のend-to-end 学習により経路追従行動を
+オンラインで模倣する手法の提案 モデルの評価に基づく訓練ステップ数の決定”，1B1-04，SI2023，(2023)
+
 
 \end{thebibliography}
 
