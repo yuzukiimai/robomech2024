@@ -60,8 +60,13 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
 これらを状況に応じて高い信頼性が見込まれる方を選択することで経路追従を継続できる可能性が高まる．
 
 本研究と同様に，カメラ画像を入力として，end-to-end 学習により経路追従する手法は，いくつか提案されている．
-例えば，Muller らは，人のコントローラ操作とカメラ画像を教師データとして学習することで，オフロード環境で
-障害物を回避しながら走行できることを確認した\cite{off_load}．また，Moridian らは，
+例えば，Muller らは，人のコントローラ操作と画像を end-to-end 学習することで，オフロード環境で
+障害物を回避して走行できることを確認した\cite{off_load}．また，Moridian らは，人のコントローラ操作と
+画像，測域センサのデータを end-to-end 学習することで，一定の経路を追従できることを
+確認した\cite{Moridian}．さらに，Bojarski らは，画像と人が操作したステアリングの角度を end-to-end 学習する
+ことで，自動車を対象とした自律移動手法を提案した\cite{Bojarski}．ただし，これらの研究はすべて人の
+コントローラ操作を教師データとしている．それに対し，従来手法はルールベースの制御器の出力である角速度を
+教師データとしている．ルールベースの制御器の出力を教師データとする
 
 
 \section{従来手法\protect\\}
@@ -107,6 +112,10 @@ Moridian, Barzin, Anurag Kamal, and Nina Mahmoudian.
 “Learning Navigation Tasks from Demonstration for Semi-autonomous Remote
 Operation of Mobile Robots.” 2018 IEEE International Symposium on
 Safety, Security, and Rescue Robotics (SSRR), pp.1-8, 2018.
+
+\bibitem{Bojarski}
+Bojarski, Mariusz, \textit{et al}.,
+“End to end learning for self-driving cars,” arXiv:1604.08316, 2016.
 
 \end{thebibliography}
 
