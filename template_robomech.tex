@@ -9,7 +9,7 @@
 \captionsetup[figure]{justification=centering}
 \captionsetup[table]{justification=centering}
 \usepackage[ipa]{pxchfon}
-\usepackage[dvipdfmx,setpagesize=false]{hyperref}
+% \usepackage[dvipdfmx,setpagesize=false]{hyperref}
 
 
 
@@ -51,7 +51,17 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
 
 \small
 \section{緒言\protect\\}
-近年\\
+本研究グループは，移動ロボットにおけるナビゲーション手段の複数化を目標としている．その目標を達成するため，
+従来よりカメラ画像とロボットの角速度を end-to-end 学習することで，経路追従する手法を提案
+し，その有効性を検証してきた\cite{okada}\cite{okada2}\cite{kiyooka}．
+本手法（以後，従来手法と呼ぶ）は，複数のセンサと地図を入力として生成した行動を，画像を入力とする
+行動に模倣する．これによりロボットは，複数のセンサと地図を使用した時と同じ行動を，画像のみで行えるように
+なる．よって，地図に基づく経路追従と画像に基づく経路追従の 2 つのナビゲーション手段を獲得できる．
+これらを状況に応じて高い信頼性が見込まれる方を選択することで経路追従を継続できる可能性が高まる．
+
+本研究と同様に，カメラ画像を入力として，end-to-end 学習により経路追従する手法は，いくつか提案されている．
+例えば，Muller らは，人のコントローラ操作とカメラ画像を教師データとして学習することで，オフロード環境で
+障害物を回避しながら走行できることを確認した\cite{off_load}．また，Moridian らは，
 
 
 \section{従来手法\protect\\}
@@ -67,11 +77,36 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
 \footnotesize
 \begin{thebibliography}{99}
 
-\bibitem{Shinjuku98}
-新宿大五朗，渋谷次郎，東京　学，``キャスティングマニピュレーションに関する研究（第1報，可変長の紐状柔軟リンクを有するマニピュレータの提案とそのスイング制御法）''，{\it 機論C編}, vol.64-626, pp.3854--3861, 1998.
+\bibitem{okada}
+岡田眞也， 清岡優祐， 上田隆一， 林原靖男，“視覚と行動の end-
+to-end 学習により経路追従行動をオンラインで模倣する手法
+の提案”，計測自動制御学会 \textit{SI} 部門講演会 \textit{SICE-SI2020} 予稿
+集， pp.1148-1152, 2020.
 
-\bibitem{Shinjuku99}
-Shinjuku, D., Shibuya, J. and Tokyo, M., ``Swing Motion Control of Casting Manipulation,'' {\it IEEE Control Systems}, vol.19-4, pp.56--64, 1999.
+\bibitem{okada2}
+岡田眞也, 清岡優祐, 春山健太, 上田隆一, 林原靖男, “視覚と
+行動の end-to-end 学習により経路追従行動 をオンラインで
+模倣する手法の提案 -経路追従行動の修正のためにデータセッ
+トを動的に追加する手法の検討-”, 計測自動制御学会 SI 部門
+講演会 SICE-SI2021 予稿集, pp.1066-1080, 2021.
+
+\bibitem{kiyooka}
+清岡優祐, 岡田眞也, 岩井一輝, 上田隆一, 林原靖男, “視覚と行動の end-
+to-end 学習により経路追従行動 をオンラインで模倣する手法の提案 -データセットと
+生成された経路追従行動の解析-”, 計測自動 制御学会 SI 部門講演会 SICE-SI2021 
+予稿集, pp.1071-1075, 2021.
+
+\bibitem{off_load}
+U. Muller, J. Ben, E. Cosatto, B. Flepp, and Y. Cun.
+"Off-Road Obstacle Avoidance through End-to-End Learning."
+Advances in neural information processing systems,
+Vol. 18, 2005.
+
+\bibitem{Moridian}
+Moridian, Barzin, Anurag Kamal, and Nina Mahmoudian. 
+“Learning Navigation Tasks from Demonstration for Semi-autonomous Remote
+Operation of Mobile Robots.” 2018 IEEE International Symposium on
+Safety, Security, and Rescue Robotics (SSRR), pp.1-8, 2018.
 
 \end{thebibliography}
 
