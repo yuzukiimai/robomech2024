@@ -26,10 +26,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
