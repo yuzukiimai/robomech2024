@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  8 FEB 2024 06:33
+This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  18 FEB 2024 23:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -246,45 +246,45 @@ LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <10> not available
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
 (Font)              scaled to size 9.6222pt on input line 54.
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 8.65997pt on input line 75.
+(Font)              scaled to size 8.65997pt on input line 85.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 8.65997pt on input line 75.
+(Font)              scaled to size 8.65997pt on input line 85.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 82.
+(Font)              using `JY1/hmc/bx/n' instead on input line 92.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 85.
+(Font)              using `JY1/hmc/bx/n' instead on input line 95.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 88.
+(Font)              using `JY1/hmc/bx/n' instead on input line 98.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 92.
+(Font)              scaled to size 7.69775pt on input line 102.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 92.
+(Font)              scaled to size 7.69775pt on input line 102.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 93.
+(Font)              using `JY1/hmc/bx/n' instead on input line 103.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 98.
+(Font)              scaled to size 7.69775pt on input line 108.
 LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 98.
+(Font)              scaled to size 7.69775pt on input line 108.
 [1
 
 
 
 ]
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 144.
+(Font)              scaled to size 7.69775pt on input line 154.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 144.
+(Font)              scaled to size 7.69775pt on input line 154.
 
 Package caption Warning: Unused \captionsetup[figure] on input line 9.
 See the caption package documentation for explanation.
@@ -294,10 +294,10 @@ Package caption Warning: Unused \captionsetup[table] on input line 10.
 See the caption package documentation for explanation.
 
 - LAST -
-Extra skip:3.75865pt
-Left:82.45532pt/0.92372pt
-Right:77.62039pt/2.0pt
-Output:80.56738pt
+Extra skip:30.50479pt
+Left:143.4649pt/2.0pt
+Right:112.96011pt/2.0pt
+Output:137.74203pt
 [2] (out/template_robomech.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -306,10 +306,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 Here is how much of TeX's memory you used:
  4703 strings out of 481768
  68472 string characters out of 5933620
- 329517 words of memory out of 5000000
+ 330517 words of memory out of 5000000
  20131 multiletter control sequences out of 15000+600000
  543771 words of font info for 78 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
  48i,14n,46p,850b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/template_robomech.dvi (2 pages, 15996 bytes).
+Output written on out/template_robomech.dvi (2 pages, 17148 bytes).
