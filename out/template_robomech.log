@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  19 FEB 2024 18:38
+This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  19 FEB 2024 22:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -28,17 +28,11 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 \@lnumwidth=\dimen151
 \bibindent=\dimen152
 \heisei=\count175
-) (./robomech.sty
-Document Style Option 'For robomec style file.' by E.Uchibe <31 Jan 95>
-modified by ROBOMECH2022 program committee <15 Oct 21>
-\tmptoki=\toks15
-\tmptokii=\toks16
-\c@header=\count176
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
+\KV@toks@=\toks15
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
@@ -68,18 +62,18 @@ Package caption3 Info: TeX engine: e-TeX on input line 61.
 \caption@hangindent=\dimen161
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
-Package caption Info: \@makecaption = \long macro:#1#2-> \vskip 10pt \setbox \@tempboxa \hbox {#1 #2} \ifdim \wd \@tempboxa >\hsize \@hangfrom {#1 }#2\par \else \hbox to\hsize {\hfil \box \@tempboxa \hfil } \fi  on input line 1082.
+Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionskip \iftdir \sbox \@tempboxa {#1\hskip 1zw#2}\else \sbox \@tempboxa {#1: #2}\fi \ifdim \wd \@tempboxa >\hsize \iftdir #1\hskip 1zw#2\relax \par \else #1: #2\relax \par \fi \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\fi \vskip \belowcaptionskip  on input line 1082.
 )
 
 Package caption Warning: Unknown document class (or package),
 (caption)                standard defaults will be used.
 See the caption package documentation for explanation.
 
-\c@caption@flags=\count177
-\c@continuedfloat=\count178
+\c@caption@flags=\count176
+\c@continuedfloat=\count177
 )
-\c@subfigure=\count179
-\c@subtable=\count180
+\c@subfigure=\count178
+\c@subtable=\count179
 ) (/usr/share/texlive/texmf-dist/tex/platex/pxchfon/pxchfon.sty
 Package: pxchfon 2020/02/01 v1.7b
 ) (/usr/share/texlive/texmf-dist/tex/platex/japanese-otf-uptex/otf.sty
@@ -100,11 +94,17 @@ LaTeX Font Info:    Overwriting math alphabet `\mathgt' in version `bold'
 (Font)                  JY1/hgt/m/n --> JY1/hgt/bx/n on input line 318.
 (/usr/share/texlive/texmf-dist/tex/platex/japanese-otf/ajmacros.sty
 Package: ajmacros 2019/04/01 21:00 iNOUE Koich! <inoue@ma.ns.musashi-tech.ac.jp>
-\@tempcntc=\count181
-\@tempcntd=\count182
-\@tempcnte=\count183
-\@tempcntf=\count184
-)) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+\@tempcntc=\count180
+\@tempcntd=\count181
+\@tempcnte=\count182
+\@tempcntf=\count183
+)) (./robomech.sty
+Document Style Option 'For robomec style file.' by E.Uchibe <31 Jan 95>
+modified by ROBOMECH2022 program committee <15 Oct 21>
+\tmptoki=\toks16
+\tmptokii=\toks17
+\c@header=\count184
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
 \l__pdf_internal_box=\box61
 \g__pdf_backend_object_int=\count185
@@ -116,129 +116,129 @@ File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
 ) (out/template_robomech.aux)
 \openout1 = `template_robomech.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 17.
+(Font)              scaled to size 9.6222pt on input line 18.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 17.
+(Font)              scaled to size 9.6222pt on input line 18.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 49.
+(Font)              scaled to size 13.85594pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 49.
+(Font)              scaled to size 13.85594pt on input line 50.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 49.
+(Font)              using `JY1/hmc/bx/n' instead on input line 50.
 
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 49.
+(Font)              scaled to size 13.85594pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 13.85594pt on input line 49.
+(Font)              scaled to size 13.85594pt on input line 50.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 49.
+(Font)              scaled to size 11.54663pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 49.
+(Font)              scaled to size 11.54663pt on input line 50.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 49.
+(Font)              using `JY1/hmc/bx/n' instead on input line 50.
 
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 49.
+(Font)              scaled to size 11.54663pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 11.54663pt on input line 49.
+(Font)              scaled to size 11.54663pt on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 49.
+(Font)              <7> on input line 50.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 49.
+(Font)              <5> on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 6.73553pt on input line 49.
+(Font)              scaled to size 6.73553pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 4.8111pt on input line 49.
+(Font)              scaled to size 4.8111pt on input line 50.
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 49.
+(Font)              scaled to size 8.65997pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 49.
+(Font)              scaled to size 8.65997pt on input line 50.
 
 LaTeX Font Warning: Font shape `JT1/hmc/m/it' undefined
-(Font)              using `JT1/hmc/m/n' instead on input line 49.
+(Font)              using `JT1/hmc/m/n' instead on input line 50.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/m/it' undefined
-(Font)              using `JY1/hmc/m/n' instead on input line 49.
+(Font)              using `JY1/hmc/m/n' instead on input line 50.
 
 
 LaTeX Font Warning: Font shape `JT1/hmc/b/it' undefined
-(Font)              using `JT1/hmc/m/n' instead on input line 49.
+(Font)              using `JT1/hmc/m/n' instead on input line 50.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/it' undefined
-(Font)              using `JY1/hmc/m/n' instead on input line 49.
+(Font)              using `JY1/hmc/m/n' instead on input line 50.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 49.
+(Font)              using `JY1/hmc/bx/n' instead on input line 50.
 
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 49.
+(Font)              scaled to size 8.65997pt on input line 50.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 49.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 8.65997pt on input line 49.
+(Font)              scaled to size 8.65997pt on input line 50.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 54.
+(Font)              using `JY1/hmc/bx/n' instead on input line 55.
 
 LaTeX Font Info:    Font shape `JT1/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 54.
+(Font)              Font shape `JT1/hgt/m/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `JT1/hgt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 54.
+(Font)              scaled to size 9.6222pt on input line 55.
 LaTeX Font Info:    Font shape `JY1/hmc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 54.
+(Font)              Font shape `JY1/hgt/m/n' tried instead on input line 55.
 LaTeX Font Info:    Font shape `JY1/hgt/m/n' will be
-(Font)              scaled to size 9.6222pt on input line 54.
+(Font)              scaled to size 9.6222pt on input line 55.
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 8.65997pt on input line 85.
+(Font)              scaled to size 8.65997pt on input line 88.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 8.65997pt on input line 85.
+(Font)              scaled to size 8.65997pt on input line 88.
 
 Underfull \vbox (badness 1648) has occurred while \output is active []
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 92.
+(Font)              using `JY1/hmc/bx/n' instead on input line 96.
 
 File: ./pdf/deplearning.pdf Graphic file (type pdf)
 <./pdf/deplearning.pdf>
 
-Overfull \hbox (8.53343pt too wide) in paragraph at lines 97--98
+Overfull \hbox (8.53343pt too wide) in paragraph at lines 108--109
  [][] 
  []
 
@@ -249,93 +249,100 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 111.
-
-File: ./png/learn.png Graphic file (type bmp)
-<./png/learn.png>
-
-Overfull \hbox (9.44508pt too wide) in paragraph at lines 116--117
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+(Font)              using `JY1/hmc/bx/n' instead on input line 121.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 123.
-
-File: ./png/afterlearn.png Graphic file (type bmp)
-<./png/afterlearn.png>
-
-Overfull \hbox (7.34198pt too wide) in paragraph at lines 128--129
- [][] 
- []
+(Font)              using `JY1/hmc/bx/n' instead on input line 122.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+LaTeX Warning: Reference `fig:3.1' on page 1 undefined on input line 122.
 
-
-LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 133.
-
-File: ./png/moderu.png Graphic file (type bmp)
-<./png/moderu.png>
-
-Overfull \hbox (12.0736pt too wide) in paragraph at lines 138--139
- [][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: ./png/wil.png Graphic file (type bmp)
-<./png/wil.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-File: ./png/location.png Graphic file (type bmp)
-<./png/location.png>
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 159.
-LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 159.
-
-LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 160.
-
-LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 165.
-LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 165.
 [1
 
 
 
 ]
+File: ./png/learn.png Graphic file (type bmp)
+<./png/learn.png>
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 168.
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 170.
+
+
+LaTeX Warning: Reference `fig:3.2' on page 2 undefined on input line 170.
+
+File: ./png/afterlearn.png Graphic file (type bmp)
+<./png/afterlearn.png>
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 185.
+
+File: ./png/moderu.png Graphic file (type bmp)
+<./png/moderu.png>
+
+Overfull \hbox (8.11508pt too wide) in paragraph at lines 190--191
+ [][] 
+ []
+
+[2]
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 197.
+
+File: ./png/location.png Graphic file (type bmp)
+<./png/location.png>
+File: ./png/failed.png Graphic file (type bmp)
+<./png/failed.png>
+File: ./png/analy.png Graphic file (type bmp)
+<./png/analy.png>
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 225.
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 230.
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 233.
+
+LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 236.
+LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
+(Font)              scaled to size 7.69775pt on input line 236.
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 237.
+
+LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
+(Font)              scaled to size 7.69775pt on input line 242.
+LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
+(Font)              scaled to size 7.69775pt on input line 242.
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 211.
+(Font)              scaled to size 7.69775pt on input line 288.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 211.
-
-Package caption Warning: Unused \captionsetup[table] on input line 10.
-See the caption package documentation for explanation.
-
-[2] (out/template_robomech.aux)
+(Font)              scaled to size 7.69775pt on input line 288.
+[3] (out/template_robomech.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
+
+LaTeX Warning: There were undefined references.
+
  ) 
 Here is how much of TeX's memory you used:
- 4358 strings out of 481768
- 63944 string characters out of 5933620
- 321201 words of memory out of 5000000
- 19778 multiletter control sequences out of 15000+600000
+ 4367 strings out of 481768
+ 64062 string characters out of 5933620
+ 323271 words of memory out of 5000000
+ 19786 multiletter control sequences out of 15000+600000
  543771 words of font info for 78 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 48i,14n,46p,357b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,14n,46p,372b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/template_robomech.dvi (2 pages, 18424 bytes).
+Output written on out/template_robomech.dvi (3 pages, 25412 bytes).
