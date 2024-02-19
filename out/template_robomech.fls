@@ -24,8 +24,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
-INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
-INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvips.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
+INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
@@ -77,6 +77,20 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlgothr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-h.tfm
+INPUT ./pdf/deplearning.pdf
+INPUT extractbb -B cropbox -O ./pdf/deplearning.pdf
+INPUT pdf/network.pdf
+INPUT extractbb -B cropbox -O pdf/network.pdf
+INPUT ./png/learn.png
+INPUT extractbb -B cropbox -O ./png/learn.png
+INPUT ./png/afterlearn.png
+INPUT extractbb -B cropbox -O ./png/afterlearn.png
+INPUT ./png/moderu.png
+INPUT extractbb -B cropbox -O ./png/moderu.png
+INPUT ./png/wil.png
+INPUT extractbb -B cropbox -O ./png/wil.png
+INPUT ./png/location.png
+INPUT extractbb -B cropbox -O ./png/location.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
