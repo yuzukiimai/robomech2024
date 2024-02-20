@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1708446480 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1708446481
-  "out/template_robomech.dvi" 1708446480 25780 ad264f4bb4e507367c140a67c8a3f812 "latex"
+["dvipdf"] 1708448593 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1708448649
+  "out/template_robomech.dvi" 1708448593 26904 e57c13047230d9fb5cfcdf1e0bb00b37 "latex"
   (generated)
   "out/template_robomech.pdf"
-["latex"] 1708446479 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1708446481
+["latex"] 1708448592 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1708448649
   "/etc/texmf/web2c/texmf.cnf" 1670335848 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/yuzuki/robomech2024/template_robomech.tex" 1708446479 16429 1e74aa30e5c7077c8310f3b8fac661ae ""
+  "/home/yuzuki/robomech2024/template_robomech.tex" 1708448649 17192 017e4878c08a731275084692232d77dc ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -42,7 +42,7 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/web2c/eptex/platex.fmt" 1685482454 10599210 9de339245e37a93177f0434a6b11323f ""
-  "out/template_robomech.aux" 1708446480 3013 b573a019a41aa7f3031d93327f0c747d "latex"
+  "out/template_robomech.aux" 1708448593 3038 26d96c2afed5df25b7adaafc9d3da68f "latex"
   "pdf/deplearning1.pdf" 1708354426 51788 60e71e6fdd2da466beb9bfb482bf8e01 ""
   "pdf/network.pdf" 1700587591 54263 c5694aa3cace6e8f5ca7ccc1a96a22a8 ""
   "png/afterlearn.png" 1708336987 140199 4dc02eb3649b60ec5556d0db92dc7cb7 ""
@@ -52,8 +52,8 @@
   "png/location.png" 1708334264 147996 f7533a8f33aabd63c6d9909845011901 ""
   "png/moderu.png" 1708336794 131268 71fa0102b028e418c1d350f94405c7bd ""
   "robomech.sty" 1707286410 10293 8982dbc33bdad8ecf621cef65d449943 ""
-  "template_robomech.tex" 1708446479 16429 1e74aa30e5c7077c8310f3b8fac661ae ""
+  "template_robomech.tex" 1708448649 17192 017e4878c08a731275084692232d77dc ""
   (generated)
+  "out/template_robomech.aux"
   "out/template_robomech.dvi"
   "out/template_robomech.log"
-  "out/template_robomech.aux"
