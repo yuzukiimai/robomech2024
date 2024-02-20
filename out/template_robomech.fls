@@ -77,8 +77,8 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlgothr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-h.tfm
-INPUT ./pdf/deplearning.pdf
-INPUT extractbb -B cropbox -O ./pdf/deplearning.pdf
+INPUT ./pdf/deplearning1.pdf
+INPUT extractbb -B cropbox -O ./pdf/deplearning1.pdf
 INPUT pdf/network.pdf
 INPUT extractbb -B cropbox -O pdf/network.pdf
 OUTPUT out/template_robomech.dvi
