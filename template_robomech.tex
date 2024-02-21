@@ -1,5 +1,5 @@
 \documentclass{jarticle}
-% \usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
+\usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{subcaption}
 \captionsetup[figure]{justification=centering}
@@ -189,7 +189,16 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \end{figure}
 
 \section{モデルの評価に基づき訓練を打ち切る手法}
-あああ\\
+本稿の実験に採用する，今井らが提案した手法について述べる．
+2.1節で述べた地図に基づく経路追従の模倣学習手法に，訓練中のモデルを評価し，
+望む出力がある程度得られたと判定したら，訓練を終了する仕組みを追加している．
+具体的には，ROS navigation パッケージの出力である角速度と，学習器の出力である角速度を比較する．
+比較の結果，その差の絶対値が一定値（0.05rad/s）未満であれば，その地点において望ましい出力が得られている
+と判定する．この点を DOL（desired output location）と呼び，判定をステップごとに繰り返す．
+データセットを収集しつつ，学習し， DOL の割合が一定値を超えたところで訓練を打ち切る．
+これにより，従来は一定のステップ数を用いていた訓練を，訓練の結果に応じて適切なステップ数で打ち切る．
+
+
 
 \begin{figure}[h!]
   \centering
@@ -203,29 +212,58 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \section{従来手法を用いた経路追従失敗の要因調査}
 あああ
 
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=45mm]{./png/location.png}
+   \caption{The end-to-end learning method}
+  %  \label{fig:2}
+\end{figure}
 
+\begin{figure}[htbp]
+  \begin{minipage}{0.45\hsize}
+   \centering
+   \includegraphics[width=40mm]{./png/failed.png}
+   \caption{Experiment model}
+  \end{minipage}
+  \begin{minipage}{0.5\hsize}
+   \centering
+   \includegraphics[width=40mm]{./png/analy.png}
+   \caption{Target path}
+  \end{minipage}
+\end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=46mm]{./png/location.png}
+   \includegraphics[height=40mm]{./png/set.png}
+   \caption{The end-to-end learning method}
+  %  \label{fig:2}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=40mm]{./png/gaku.png}
    \caption{The end-to-end learning method}
   %  \label{fig:2}
 \end{figure}
 
 
-\begin{figure}[h!]
-  \centering
-   \includegraphics[height=43mm]{./png/failed.png}
-   \caption{The end-to-end learning method}
-  %  \label{fig:2}
-\end{figure}
 
-\begin{figure}[h!]
-  \centering
-   \includegraphics[height=43mm]{./png/analy.png}
-   \caption{The end-to-end learning method}
-  %  \label{fig:2}
-\end{figure}
+
+
+
+% \begin{figure}[h!]
+%   \centering
+%    \includegraphics[height=43mm]{./png/failed.png}
+%    \caption{The end-to-end learning method}
+%   %  \label{fig:2}
+% \end{figure}
+
+% \begin{figure}[h!]
+%   \centering
+%    \includegraphics[height=43mm]{./png/analy.png}
+%    \caption{The end-to-end learning method}
+%   %  \label{fig:2}
+% \end{figure}
 
 
 \section{提案手法}
@@ -235,6 +273,43 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \section{シミュレータでの実験}
 あああ\\
+
+\begin{table}[h!]
+  \centering
+  \caption{Number of successes} \vspace*{2mm}
+    \scalebox{1.0}[1.0] {
+    \begin{tabular}{|c|c|}
+      \hline\hline
+      Experiments & Number of successes \\
+      \hline\hline
+      Conventional method & 99/100 \\
+      Proposed method & 99/100\\
+      \hline 
+    \end{tabular} }
+\end {table}
+
+
+\begin{figure}[htbp]
+  \begin{minipage}[t]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, scale=0.23]{./png/c.png}
+    \subcaption{Path following method}
+  \end{minipage}
+  \begin{minipage}[t]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, scale=0.23]{./png/p.png}
+    \subcaption{Using learning machine output method}
+  \end{minipage}\vspace*{2mm}
+  \caption{Number of return to path}
+\end{figure}
+
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=45mm]{./png/dataset_pro.png}
+   \caption{The end-to-end learning method}
+  %  \label{fig:2}
+\end{figure}
 
 \section{結言}
 本稿では，従来から提案する経路追従行動の模倣手法における経路追従失敗の一例を取り上げ，
