@@ -1,5 +1,5 @@
 \documentclass{jarticle}
-\usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
+% \usepackage{flushend}  % 最終ページの2カラムの左右の高さを揃える
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{subcaption}
 \captionsetup[figure]{justification=centering}
@@ -173,7 +173,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \subsection{訓練済みモデルを用いた視覚に基づく経路追従}
 学習が終了したら，訓練済みモデルを用いて，経路追従できるかを確認する．
-このときのシステム構成を\figref{fig:4}に示す．
+このときのシステムを\figref{fig:4}に示す．
 ここでは，ROS の navigation パッケージからの出力は使用せずにロボットを制御する．
 地図に基づく経路追従の模倣学習時と同様に，画像を学習器に入力し，その推定結果をヨー方向の
 目標角速度としてロボットを自律移動させる．
@@ -189,7 +189,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \end{figure}
 
 \section{モデルの評価に基づき訓練を打ち切る手法}
-本稿の実験に採用する，今井らが提案した手法について述べる．
+本稿の実験で採用する，今井らが提案した手法について述べる．\figref{fig:5}に本手法のシステムを示す．
 2.1節で述べた地図に基づく経路追従の模倣学習手法に，訓練中のモデルを評価し，
 望む出力がある程度得られたと判定したら，訓練を終了する仕組みを追加している．
 具体的には，ROS navigation パッケージの出力である角速度と，学習器の出力である角速度を比較する．
@@ -197,6 +197,10 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 と判定する．この点を DOL（desired output location）と呼び，判定をステップごとに繰り返す．
 データセットを収集しつつ，学習し， DOL の割合が一定値を超えたところで訓練を打ち切る．
 これにより，従来は一定のステップ数を用いていた訓練を，訓練の結果に応じて適切なステップ数で打ち切る．
+ただし，経路の一部でも望ましい出力が得られていないと経路追従できないため，DOL の割合は経路全体に対して
+ではなく，経路を分割して算出することが望ましい．
+以降，本手法を従来手法と呼ぶこととする．
+
 
 
 
@@ -204,13 +208,21 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
   \centering
    \includegraphics[height=48mm]{./png/moderu.png}
    \caption{The end-to-end learning method}
-  %  \label{fig:2}
+   \label{fig:5}
 \end{figure}
 
-\newpage
 
 \section{従来手法を用いた経路追従失敗の要因調査}
-あああ
+従来手法では，すべての経由点間で DOL の割合が 33 ％以上 であれば，99％経路追従に成功する
+ことが確認されている\cite{imai2}．
+しかし，訓練を打ち切る基準を満たしていても経路追従に失敗する例がある．
+よって，再現実験を行い，得た経路追従失敗の一例からその要因を調査する．
+
+\subsection{実験装置}
+実験はシミュレータで行う．シミュレータには Gazebo\cite{gazebo}，環境には Willow Garage を用いた．
+ロボットには TurtleBot3\cite{TurtleBot3}にカメラを 3つ取り付けたモデルを用いた．
+
+\subsection{実験方法}
 
 \begin{figure}[h!]
   \centering
@@ -218,6 +230,9 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
    \caption{The end-to-end learning method}
   %  \label{fig:2}
 \end{figure}
+
+
+\subsection{実験結果}
 
 \begin{figure}[htbp]
   \begin{minipage}{0.45\hsize}
@@ -248,26 +263,22 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 
 
-
-
-
-% \begin{figure}[h!]
-%   \centering
-%    \includegraphics[height=43mm]{./png/failed.png}
-%    \caption{The end-to-end learning method}
-%   %  \label{fig:2}
-% \end{figure}
-
-% \begin{figure}[h!]
-%   \centering
-%    \includegraphics[height=43mm]{./png/analy.png}
-%    \caption{The end-to-end learning method}
-%   %  \label{fig:2}
-% \end{figure}
-
-
 \section{提案手法}
-あああ\\
+
+
+\begin{figure}[htbp]
+  \begin{minipage}[t]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, scale=0.3]{./png/a.png}
+    \subcaption{Path following method}
+  \end{minipage}
+  \begin{minipage}[t]{0.5\linewidth}
+    \centering
+    \includegraphics[keepaspectratio, scale=0.3]{./png/b.png}
+    \subcaption{Using learning machine output method}
+  \end{minipage}\vspace*{2mm}
+  \caption{Number of return to path}
+\end{figure}
 
 \newpage
 
@@ -306,7 +317,14 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=45mm]{./png/dataset_pro.png}
+   \includegraphics[height=45mm]{./png/dataset_pro2.png}
+   \caption{The end-to-end learning method}
+  %  \label{fig:2}
+\end{figure}
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=45mm]{./png/gaku_pro2.png}
    \caption{The end-to-end learning method}
   %  \label{fig:2}
 \end{figure}
@@ -382,6 +400,17 @@ Bojarski, Mariusz, \textit{et al}.,
 ros-planning, navigation リポジトリ\\
 https://github.com/ros-planning/navigation.\\
 ( 最終閲覧日 : \today )
+
+\bibitem{gazebo}
+Nathan Koenig and Andrew Howard, “Design and use paradigms for gazebo, an
+open-source multi-robot simulator,” \textit{2004 IEEE/RSJ International Conference
+on Intelligent Robots and Systems (IROS)}, Vol.3, pp.
+2149-2154, 2004.
+
+\bibitem{TurtleBot3}
+Erico Guizzo and Ackerman Evan, “The TurtleBot3 Teacher [Resources Hands On],
+” \textit{IEEE Spectrum}, Vol.54, pp.19-20, August 2017.
+\vspace*{2mm}
 
 
 \end{thebibliography}

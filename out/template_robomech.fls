@@ -12,10 +12,6 @@ INPUT /usr/share/texlive/texmf-dist/tex/platex/base/jarticle.cls
 INPUT /usr/share/texlive/texmf-dist/tex/platex/base/jarticle.cls
 INPUT /usr/share/texlive/texmf-dist/tex/platex/base/jsize10.clo
 INPUT /usr/share/texlive/texmf-dist/tex/platex/base/jsize10.clo
-INPUT /usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-INPUT /usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
@@ -102,12 +98,18 @@ INPUT ./png/set.png
 INPUT extractbb -B cropbox -O ./png/set.png
 INPUT ./png/gaku.png
 INPUT extractbb -B cropbox -O ./png/gaku.png
+INPUT ./png/a.png
+INPUT extractbb -B cropbox -O ./png/a.png
+INPUT ./png/b.png
+INPUT extractbb -B cropbox -O ./png/b.png
 INPUT ./png/c.png
 INPUT extractbb -B cropbox -O ./png/c.png
 INPUT ./png/p.png
 INPUT extractbb -B cropbox -O ./png/p.png
-INPUT ./png/dataset_pro.png
-INPUT extractbb -B cropbox -O ./png/dataset_pro.png
+INPUT ./png/dataset_pro2.png
+INPUT extractbb -B cropbox -O ./png/dataset_pro2.png
+INPUT ./png/gaku_pro2.png
+INPUT extractbb -B cropbox -O ./png/gaku_pro2.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm

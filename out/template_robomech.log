@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  21 FEB 2024 13:22
+This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  23 FEB 2024 02:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -28,32 +28,11 @@ LaTeX Font Info:    Overwriting symbol font `mincho' in version `bold'
 \@lnumwidth=\dimen151
 \bibindent=\dimen152
 \heisei=\count175
-) (/usr/share/texlive/texmf-dist/tex/latex/sttools/flushend.sty
-Package: flushend 2017/03/27 v3.3 Balancing columns in twocolumn mode
-\flushend@@lastskip@a=\skip49
-\flushend@@lastskip@b=\skip50
-\flushend@@lastskip@c=\skip51
-\flushend@@penalty@a=\count176
-\flushend@@lastkern@a=\dimen153
-\var@@temp@spread=\dimen154
-\var@@temp@a=\dimen155
-\flushend@@page@rule=\dimen156
-\flushend@@varbox@a=\box61
-\flushend@@varbox@c=\box62
-\flushend@@tempbox@a=\box63
-\flushend@@tempbox@c=\box64
-\@viper=\box65
-\hold@viper=\box66
-\atColsBreak=\toks15
-\atColsEnd=\toks16
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count177
-)) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2019/11/30 v1.2a Enhanced LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks17
+\KV@toks@=\toks15
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2019/11/30 v1.4a Standard LaTeX Graphics (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
@@ -65,8 +44,8 @@ Package graphics Info: Driver file: dvipdfmx.def on input line 105.
 (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/dvipdfmx.def
 File: dvipdfmx.def 2017/06/24 v5.0g Graphics/color driver for dvipdfmx
 ))
-\Gin@req@height=\dimen157
-\Gin@req@width=\dimen158
+\Gin@req@height=\dimen153
+\Gin@req@width=\dimen154
 ) (/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
@@ -74,13 +53,13 @@ Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen159
-\captionmargin@=\dimen160
-\captionwidth=\dimen161
-\caption@tempdima=\dimen162
-\caption@indent=\dimen163
-\caption@parindent=\dimen164
-\caption@hangindent=\dimen165
+\captionmargin=\dimen155
+\captionmargin@=\dimen156
+\captionwidth=\dimen157
+\caption@tempdima=\dimen158
+\caption@indent=\dimen159
+\caption@parindent=\dimen160
+\caption@hangindent=\dimen161
 Package caption Info: Unknown document class (or package),
 (caption)             standard defaults will be used.
 Package caption Info: \@makecaption = \long macro:#1#2->\vskip \abovecaptionskip \iftdir \sbox \@tempboxa {#1\hskip 1zw#2}\else \sbox \@tempboxa {#1: #2}\fi \ifdim \wd \@tempboxa >\hsize \iftdir #1\hskip 1zw#2\relax \par \else #1: #2\relax \par \fi \else \global \@minipagefalse \hb@xt@ \hsize {\hfil \box \@tempboxa \hfil }\fi \vskip \belowcaptionskip  on input line 1082.
@@ -90,11 +69,11 @@ Package caption Warning: Unknown document class (or package),
 (caption)                standard defaults will be used.
 See the caption package documentation for explanation.
 
-\c@caption@flags=\count178
-\c@continuedfloat=\count179
+\c@caption@flags=\count176
+\c@continuedfloat=\count177
 )
-\c@subfigure=\count180
-\c@subtable=\count181
+\c@subfigure=\count178
+\c@subtable=\count179
 ) (/usr/share/texlive/texmf-dist/tex/platex/pxchfon/pxchfon.sty
 Package: pxchfon 2020/02/01 v1.7b
 ) (/usr/share/texlive/texmf-dist/tex/platex/japanese-otf-uptex/otf.sty
@@ -115,25 +94,25 @@ LaTeX Font Info:    Overwriting math alphabet `\mathgt' in version `bold'
 (Font)                  JY1/hgt/m/n --> JY1/hgt/bx/n on input line 318.
 (/usr/share/texlive/texmf-dist/tex/platex/japanese-otf/ajmacros.sty
 Package: ajmacros 2019/04/01 21:00 iNOUE Koich! <inoue@ma.ns.musashi-tech.ac.jp>
-\@tempcntc=\count182
-\@tempcntd=\count183
-\@tempcnte=\count184
-\@tempcntf=\count185
+\@tempcntc=\count180
+\@tempcntd=\count181
+\@tempcnte=\count182
+\@tempcntf=\count183
 )) (./robomech.sty
 Document Style Option 'For robomec style file.' by E.Uchibe <31 Jan 95>
 modified by ROBOMECH2022 program committee <15 Oct 21>
-\tmptoki=\toks18
-\tmptokii=\toks19
-\c@header=\count186
+\tmptoki=\toks16
+\tmptokii=\toks17
+\c@header=\count184
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2020-02-03 L3 backend support: dvips
-\l__pdf_internal_box=\box67
-\g__pdf_backend_object_int=\count187
-\l__pdf_backend_content_box=\box68
-\l__pdf_backend_model_box=\box69
-\g__pdf_backend_annotation_int=\count188
-\g__pdf_backend_link_int=\count189
-\g__pdf_backend_link_sf_int=\count190
+\l__pdf_internal_box=\box61
+\g__pdf_backend_object_int=\count185
+\l__pdf_backend_content_box=\box62
+\l__pdf_backend_model_box=\box63
+\g__pdf_backend_annotation_int=\count186
+\g__pdf_backend_link_int=\count187
+\g__pdf_backend_link_sf_int=\count188
 ) (out/template_robomech.aux)
 \openout1 = `template_robomech.aux'.
 
@@ -284,21 +263,33 @@ LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
 File: ./png/moderu.png Graphic file (type bmp)
 <./png/moderu.png>
 
-Overfull \hbox (8.11508pt too wide) in paragraph at lines 205--206
+Overfull \hbox (8.11508pt too wide) in paragraph at lines 209--210
  [][] 
  []
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 215.
 
 [2]
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 212.
+(Font)              using `JY1/hmc/bx/n' instead on input line 221.
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 225.
 
 File: ./png/location.png Graphic file (type bmp)
 <./png/location.png>
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 235.
+
 File: ./png/failed.png Graphic file (type bmp)
 <./png/failed.png>
 
-Overfull \hbox (2.41925pt too wide) in paragraph at lines 225--226
+Overfull \hbox (2.41925pt too wide) in paragraph at lines 240--241
  [][] 
  []
 
@@ -309,62 +300,87 @@ File: ./png/set.png Graphic file (type bmp)
 File: ./png/gaku.png Graphic file (type bmp)
 <./png/gaku.png>
 
-LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 269.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 274.
+(Font)              using `JY1/hmc/bx/n' instead on input line 266.
+
+File: ./png/a.png Graphic file (type bmp)
+<./png/a.png>
+
+Overfull \hbox (5.71558pt too wide) in paragraph at lines 272--273
+ [][] 
+ []
+
+File: ./png/b.png Graphic file (type bmp)
+<./png/b.png>
+
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 270--280
+[][] [] 
+ []
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 285.
 
 File: ./png/c.png Graphic file (type bmp)
 <./png/c.png>
 File: ./png/p.png Graphic file (type bmp)
 <./png/p.png>
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 293--303
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 304--314
 [][] [] 
  []
 
-File: ./png/dataset_pro.png Graphic file (type bmp)
-<./png/dataset_pro.png>
+File: ./png/dataset_pro2.png Graphic file (type bmp)
+<./png/dataset_pro2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: ./png/gaku_pro2.png Graphic file (type bmp)
+<./png/gaku_pro2.png>
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 314.
+(Font)              using `JY1/hmc/bx/n' instead on input line 332.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 322.
+(Font)              scaled to size 7.69775pt on input line 340.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 322.
+(Font)              scaled to size 7.69775pt on input line 340.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 323.
+(Font)              using `JY1/hmc/bx/n' instead on input line 341.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 328.
+(Font)              scaled to size 7.69775pt on input line 346.
 LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 328.
+(Font)              scaled to size 7.69775pt on input line 346.
 [3]
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 374.
+(Font)              scaled to size 7.69775pt on input line 392.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 374.
-- LAST -
-Extra skip:11.75865pt
-Left:186.80463pt/0.92372pt
-Right:173.9697pt/2.0pt
-Output:180.91669pt
+(Font)              scaled to size 7.69775pt on input line 392.
+
+Underfull \hbox (badness 1242) in paragraph at lines 405--409
+[]\OT1/cmr/m/n/8 Nathan Koenig and An-drew Howard,  \JY1/hmc/m/it/8 “\OT1/cmr/m/n/8 De-sign and use
+ []
+
 [4] (out/template_robomech.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4803 strings out of 481768
- 70059 string characters out of 5933620
- 332271 words of memory out of 5000000
- 20209 multiletter control sequences out of 15000+600000
+ 4409 strings out of 481768
+ 64724 string characters out of 5933620
+ 322307 words of memory out of 5000000
+ 19820 multiletter control sequences out of 15000+600000
  543771 words of font info for 78 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 48i,14n,46p,858b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,14n,46p,372b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/template_robomech.dvi (4 pages, 29976 bytes).
+Output written on out/template_robomech.dvi (4 pages, 32516 bytes).
