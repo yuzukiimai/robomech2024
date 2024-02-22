@@ -145,7 +145,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[h!]
   \centering
    \includegraphics[height=53mm]{./png/learn.png}
-   \caption{The end-to-end learning method}
+   \caption{Method to imitate path-tracking behavior}
    \label{fig:3}
 \end{figure}
 
@@ -169,9 +169,6 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
     \end{tabular} }
 \end {table}
 
-
-
-
 \subsection{訓練済みモデルを用いた視覚に基づく経路追従}
 学習が終了したら，訓練済みモデルを用いて，経路追従できるかを確認する．
 このときのシステムを\figref{fig:4}に示す．
@@ -185,7 +182,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[h!]
   \centering
    \includegraphics[height=53mm]{./png/afterlearn.png}
-   \caption{The end-to-end learning method}
+   \caption{Vision-based path-tracking using learned model}
    \label{fig:4}
 \end{figure}
 
@@ -205,7 +202,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[h!]
   \centering
    \includegraphics[height=48mm]{./png/moderu.png}
-   \caption{The end-to-end learning method}
+   \caption{Method to terminate training based on model evaluation}
    \label{fig:5}
 \end{figure}
 
@@ -231,10 +228,9 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[h!]
   \centering
    \includegraphics[height=45mm]{./png/location.png}
-   \caption{The end-to-end learning method}
+   \caption{Waypoints used in the experiment}
    \label{fig:6}
 \end{figure}
-
 
 \subsection{実験結果}
 経路追従失敗の一例を\figref{fig:7}に示す．
@@ -245,21 +241,6 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
    \caption{The end-to-end learning method}
    \label{fig:7}
 \end{figure}
-
-% \begin{figure}[htbp]
-%   \begin{minipage}{0.45\hsize}
-%    \centering
-%    \includegraphics[width=40mm]{./png/failed.png}
-%    \caption{Experiment model}
-%   \end{minipage}
-%   \begin{minipage}{0.5\hsize}
-%    \centering
-%    \includegraphics[width=40mm]{./png/analy.png}
-%    \caption{Target path}
-%   \end{minipage}
-% \end{figure}
-
-
 
 \newpage
 
@@ -297,12 +278,18 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
   \caption{Number of return to path}
 \end{figure}
 
-\newpage
+% \newpage
 
 \section{提案手法を用いた実験}
-提案手法の有効性を検証するため，実験を行う．実験装置や実験方法は 4章と同様であるが，失敗の有無に
+提案手法の有効性を検証するため，実験を行う．
+
+\subsection{実験装置，実験方法}
+実験装置や実験方法は 4章と同様であるが，失敗の有無に
 かかわらず，100 回実験する．経路追従の成功率と，訓練打ち切りステップ数，データセットの観点から
 従来手法と比較し，有効性を評価する．
+
+\subsection{経路追従の成功率}
+あああああああああああああああああああああああああああああああああ
 
 \begin{table}[h!]
   \centering
@@ -318,6 +305,9 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
     \end{tabular} }
 \end {table}
 
+\subsection{訓練打ち切りステップ数}
+あああああああああああああああああああああああああああああああああああああ
+
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
@@ -327,11 +317,15 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.27]{./png/p.png}
+    \includegraphics[keepaspectratio, scale=0.273]{./png/p.png}
     \subcaption{Using learning machine output method}
   \end{minipage}\vspace*{2mm}
   \caption{Number of return to path}
 \end{figure}
+
+
+\subsection{収集および学習したデータセット}
+ああああああああああああああああああああああああ
 
 
 \begin{figure}[h!]
@@ -356,7 +350,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 そのうえで，ロボットの並進速度を教師データの値に応じて可変にすることで，データセットの収集密度を調整
 し，学習を効率化する手法を提案した．その後，シミュレータでの実験により提案手法の有効性を検証した．
 結果的に，提案手法は従来手法に比べて，データの不均衡を改善し，訓練打ち切りの指標を
-早くに満たすことができる傾向が見られたため，有効であることが確認された．
+早くに満たすことができる傾向が見られたため，有効であることが確認された．\\
 
 \footnotesize
 \begin{thebibliography}{99}
