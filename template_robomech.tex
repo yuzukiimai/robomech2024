@@ -222,7 +222,9 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 学習後は，視覚に基づく経路追従で，経路を 1 周できるか確認する．
 壁に衝突することなくコースを 1 周できれば経路追従に成功したと判断する．
 なお，並進速度は常に0.2 m/s とする．
-ここで，
+ここで，各経由点間に位置情報を加えたデータセットを収集する．
+図の赤で示した部分は，先行研究において特に経路追従に多く失敗した地点であることを意味する．
+ただし，ロボットは位置情報は学習せず，従来と同様に画像から角速度のみを予測する．
 実験は，経路追従の失敗例を確認するまで行い，失敗例のデータを解析.
 
 \begin{figure}[h!]
@@ -233,7 +235,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \end{figure}
 
 \subsection{実験結果}
-経路追従失敗の一例を\figref{fig:7}に示す．
+経路追従失敗の一例を\figref{fig:7}に示す．あああああああああああ
 
 \begin{figure}[h!]
   \centering
@@ -260,17 +262,17 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 
 \section{提案手法}
-提案手法について述べる
+提案手法について述べる．あああああああああああああああああ
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.31]{./png/a.png}
+    \includegraphics[keepaspectratio, scale=0.33]{./png/a.png}
     \subcaption{Path following method}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.31]{./png/b.png}
+    \includegraphics[keepaspectratio, scale=0.33]{./png/b.png}
     \subcaption{Using learning machine output method}
   \end{minipage}
   \caption{Number of return to path}
@@ -412,7 +414,7 @@ Bojarski, Mariusz, \textit{et al}.,
 日本機械学会ロボティクス・メカトロニクス講演会'23予稿集，2P1-G07(2023)
 
 \bibitem{imai2}
-今井 悠月、落合 拓海、白須 和暉、上田 隆一、林原 靖男，”視覚と行動のend-to-end 学習により経路追従行動を
+今井悠月，落合拓海，白須和暉，上田隆一，林原靖男，”視覚と行動のend-to-end 学習により経路追従行動を
 オンラインで模倣する手法の提案 モデルの評価に基づく訓練ステップ数の決定”，1B1-04，SI2023，(2023)
 
 \bibitem{navigation}
