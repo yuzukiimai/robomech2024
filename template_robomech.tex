@@ -156,8 +156,8 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
   \caption{Yaw angular velocity offset per camera}
   \label{table:1}
     \scalebox{0.90}[0.90]{
-    \begin{tabular}{|l|l|}
-      \hline\hline
+    \begin{tabular}{|l||l|}
+      \hline
       Cameras & Yaw angular velocity offset (rad/s)\\
       \hline\hline
       Left camera & ROS navigation system output $-$ 0.2\\
@@ -167,7 +167,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
       Right camera & ROS navigation system output $+$ 0.2\\
       \hline
     \end{tabular} }
-\end {table}
+\end{table}
 
 \subsection{訓練済みモデルを用いた視覚に基づく経路追従}
 学習が終了したら，訓練済みモデルを用いて，経路追従できるかを確認する．
@@ -259,8 +259,6 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \end{figure}
 
 
-
-
 \section{提案手法}
 提案手法について述べる
 
@@ -291,19 +289,24 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \subsection{経路追従の成功率}
 あああああああああああああああああああああああああああああああああ
 
+
+
 \begin{table}[h!]
   \centering
-  \caption{Number of successes} \vspace*{2mm}
-    \scalebox{0.9}[0.9] {
-    \begin{tabular}{|c|c|}
-      \hline\hline
+  \caption{Number of successes}
+  \label{table:2}
+  \vspace*{0.5mm}
+    \scalebox{0.90}[0.90] {
+    \begin{tabular}{|l||c|}
+      \hline
       Experiments & Number of successes \\
       \hline\hline
       Conventional method & 99/100 \\
+      \hline
       Proposed method & 99/100\\
       \hline 
     \end{tabular} }
-\end {table}
+\end{table}
 
 \subsection{訓練打ち切りステップ数}
 あああああああああああああああああああああああああああああああああああああ
@@ -426,7 +429,6 @@ on Intelligent Robots and Systems (IROS)}, Vol.3, pp.
 \bibitem{TurtleBot3}
 Erico Guizzo and Ackerman Evan, “The TurtleBot3 Teacher [Resources Hands On],
 ” \textit{IEEE Spectrum}, Vol.54, pp.19-20, August 2017.
-\vspace*{2mm}
 
 
 \end{thebibliography}
