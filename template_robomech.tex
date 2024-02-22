@@ -139,7 +139,8 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 ただし，旋回時（0.1 rad/s 以上）には，中央のカメラのみを使用する．
 ロボットのモータを制御するモジュールは，ROS の navigation パッケージから出力される
 角速度と，学習器から出力される角速度の 2つで構成されており，この 2つを切り替えることが可能である．
-これにより，ロボットが経路から外れる行動を教師データに含めることなく，目標経路へ復帰する行動を収集できる．
+学習器の出力をベースに走行すると，学習ができていない部分でロボットは目標経路から外れることになるため，
+目標経路へ復帰する行動をより効率的に収集できる．
 
 \begin{figure}[h!]
   \centering
@@ -148,13 +149,13 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
    \label{fig:3}
 \end{figure}
 
-\vspace*{-2zh}
+\vspace*{-3.5mm}
 
 \begin{table}[h!]
   \centering
   \caption{Yaw angular velocity offset per camera}
   \label{table:1}
-    \scalebox{0.95}[0.95]{
+    \scalebox{0.90}[0.90]{
     \begin{tabular}{|l|l|}
       \hline\hline
       Cameras & Yaw angular velocity offset (rad/s)\\
@@ -193,16 +194,13 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 2.1節で述べた地図に基づく経路追従の模倣学習手法に，訓練中のモデルを評価し，
 望む出力がある程度得られたと判定したら，訓練を終了する仕組みを追加している．
 具体的には，ROS navigation パッケージの出力である角速度と，学習器の出力である角速度を比較する．
-比較の結果，その差の絶対値が一定値（0.05rad/s）未満であれば，その地点において望ましい出力が得られている
+比較の結果，その差の絶対値が一定値（0.05 rad/s）未満であれば，その地点において望ましい出力が得られている
 と判定する．この点を DOL（desired output location）と呼び，判定をステップごとに繰り返す．
 データセットを収集しつつ，学習し， DOL の割合が一定値を超えたところで訓練を打ち切る．
 これにより，従来は一定のステップ数を用いていた訓練を，訓練の結果に応じて適切なステップ数で打ち切る．
-ただし，経路の一部でも望ましい出力が得られていないと経路追従できないため，DOL の割合は経路全体に対して
+ただし，経路の一部でも DOL が少ないと経路追従できないため，DOL の割合は経路全体に対して
 ではなく，経路を分割して算出することが望ましい．
 以降，本手法を従来手法と呼ぶこととする．
-
-
-
 
 \begin{figure}[h!]
   \centering
@@ -211,41 +209,59 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
    \label{fig:5}
 \end{figure}
 
-
 \section{従来手法を用いた経路追従失敗の要因調査}
 従来手法では，すべての経由点間で DOL の割合が 33 ％以上 であれば，99％経路追従に成功する
 ことが確認されている\cite{imai2}．
-しかし，訓練を打ち切る基準を満たしていても経路追従に失敗する例がある．
-よって，再現実験を行い，得た経路追従失敗の一例からその要因を調査する．
+ただし，訓練を打ち切る基準を満たしていても経路追従に失敗する例がある．
+そこで，再現実験を行い，それによって得た経路追従失敗の一例から要因を調査する．
 
 \subsection{実験装置}
 実験はシミュレータで行う．シミュレータには Gazebo\cite{gazebo}，環境には Willow Garage を用いた．
 ロボットには TurtleBot3\cite{TurtleBot3}にカメラを 3つ取り付けたモデルを用いた．
 
 \subsection{実験方法}
+実験では，はじめに地図に基づく経路追従を模倣学習する．
+このとき，ロボットは\figref{fig:6}に示すような緑色の経由点を順次移動する．
+学習後は，視覚に基づく経路追従で，経路を 1 周できるか確認する．
+壁に衝突することなくコースを 1 周できれば経路追従に成功したと判断する．
+なお，並進速度は常に0.2 m/s とする．
+ここで，
+実験は，経路追従の失敗例を確認するまで行い，失敗例のデータを解析.
 
 \begin{figure}[h!]
   \centering
    \includegraphics[height=45mm]{./png/location.png}
    \caption{The end-to-end learning method}
-  %  \label{fig:2}
+   \label{fig:6}
 \end{figure}
 
 
 \subsection{実験結果}
+経路追従失敗の一例を\figref{fig:7}に示す．
 
-\begin{figure}[htbp]
-  \begin{minipage}{0.45\hsize}
-   \centering
-   \includegraphics[width=40mm]{./png/failed.png}
-   \caption{Experiment model}
-  \end{minipage}
-  \begin{minipage}{0.5\hsize}
-   \centering
-   \includegraphics[width=40mm]{./png/analy.png}
-   \caption{Target path}
-  \end{minipage}
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=40mm]{./png/failed.png}
+   \caption{The end-to-end learning method}
+   \label{fig:7}
 \end{figure}
+
+% \begin{figure}[htbp]
+%   \begin{minipage}{0.45\hsize}
+%    \centering
+%    \includegraphics[width=40mm]{./png/failed.png}
+%    \caption{Experiment model}
+%   \end{minipage}
+%   \begin{minipage}{0.5\hsize}
+%    \centering
+%    \includegraphics[width=40mm]{./png/analy.png}
+%    \caption{Target path}
+%   \end{minipage}
+% \end{figure}
+
+
+
+\newpage
 
 \begin{figure}[h!]
   \centering
@@ -263,18 +279,19 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 
 
-\section{提案手法}
 
+\section{提案手法}
+提案手法について述べる
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.3]{./png/a.png}
+    \includegraphics[keepaspectratio, scale=0.31]{./png/a.png}
     \subcaption{Path following method}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.3]{./png/b.png}
+    \includegraphics[keepaspectratio, scale=0.31]{./png/b.png}
     \subcaption{Using learning machine output method}
   \end{minipage}\vspace*{2mm}
   \caption{Number of return to path}
@@ -282,13 +299,15 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \newpage
 
-\section{シミュレータでの実験}
-あああ\\
+\section{提案手法を用いた実験}
+提案手法の有効性を検証するため，実験を行う．実験装置や実験方法は 4章と同様であるが，失敗の有無に
+かかわらず，100 回実験する．経路追従の成功率と，訓練打ち切りステップ数，データセットの観点から
+従来手法と比較し，有効性を評価する．
 
 \begin{table}[h!]
   \centering
   \caption{Number of successes} \vspace*{2mm}
-    \scalebox{1.0}[1.0] {
+    \scalebox{0.9}[0.9] {
     \begin{tabular}{|c|c|}
       \hline\hline
       Experiments & Number of successes \\
@@ -303,12 +322,12 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.23]{./png/c.png}
+    \includegraphics[keepaspectratio, scale=0.27]{./png/c.png}
     \subcaption{Path following method}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.23]{./png/p.png}
+    \includegraphics[keepaspectratio, scale=0.27]{./png/p.png}
     \subcaption{Using learning machine output method}
   \end{minipage}\vspace*{2mm}
   \caption{Number of return to path}
@@ -317,17 +336,19 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=45mm]{./png/dataset_pro2.png}
+   \includegraphics[height=37mm]{./png/dataset_pro2.png}
    \caption{The end-to-end learning method}
   %  \label{fig:2}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=45mm]{./png/gaku_pro2.png}
+   \includegraphics[height=37mm]{./png/gaku_pro2.png}
    \caption{The end-to-end learning method}
   %  \label{fig:2}
 \end{figure}
+
+\newpage
 
 \section{結言}
 本稿では，従来から提案する経路追従行動の模倣手法における経路追従失敗の一例を取り上げ，

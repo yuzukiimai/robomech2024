@@ -92,8 +92,6 @@ INPUT ./png/location.png
 INPUT extractbb -B cropbox -O ./png/location.png
 INPUT ./png/failed.png
 INPUT extractbb -B cropbox -O ./png/failed.png
-INPUT ./png/analy.png
-INPUT extractbb -B cropbox -O ./png/analy.png
 INPUT ./png/set.png
 INPUT extractbb -B cropbox -O ./png/set.png
 INPUT ./png/gaku.png
