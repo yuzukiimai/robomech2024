@@ -1,11 +1,11 @@
 # Fdb version 3
-["dvipdf"] 1708725567 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1708725568
-  "out/template_robomech.dvi" 1708725567 41472 962e66142c5b7680f9bbbe4d557b4f95 "latex"
+["dvipdf"] 1708727040 "out/template_robomech.dvi" "out/template_robomech.pdf" "out/template_robomech" 1708727041
+  "out/template_robomech.dvi" 1708727040 41500 99b908ae6f435c116116bee771676d36 "latex"
   (generated)
   "out/template_robomech.pdf"
-["latex"] 1708725566 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1708725568
+["latex"] 1708727039 "/home/yuzuki/robomech2024/template_robomech.tex" "out/template_robomech.dvi" "template_robomech" 1708727041
   "/etc/texmf/web2c/texmf.cnf" 1670335848 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/yuzuki/robomech2024/template_robomech.tex" 1708725566 27765 9668cdb72e759477a6c52f8720145fed ""
+  "/home/yuzuki/robomech2024/template_robomech.tex" 1708727038 27756 b7e596b7236d982bf948ecf3f59eb4a8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm" 1136768653 1328 c834bbb027764024c09d3d2bf908b5f0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
@@ -42,7 +42,7 @@
   "/usr/share/texlive/texmf-dist/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/web2c/eptex/platex.fmt" 1685482454 10599210 9de339245e37a93177f0434a6b11323f ""
-  "out/template_robomech.aux" 1708725567 5219 ad374d559c60d4d3bf7710320ac6a3ea "latex"
+  "out/template_robomech.aux" 1708727040 5219 ad374d559c60d4d3bf7710320ac6a3ea "latex"
   "pdf/deplearning1.pdf" 1708354426 51788 60e71e6fdd2da466beb9bfb482bf8e01 ""
   "pdf/network.pdf" 1700587591 54263 c5694aa3cace6e8f5ca7ccc1a96a22a8 ""
   "png/a.png" 1708630265 17541 2f84f128f550ee84b3e8adf896005e78 ""
@@ -59,8 +59,8 @@
   "png/p.png" 1708630989 25970 01dd2ae2613d02c4fdfbeaa3504308d7 ""
   "png/set2.png" 1708635493 13753 e987a734a2636aad550bf9098aa36678 ""
   "robomech.sty" 1707286410 10293 8982dbc33bdad8ecf621cef65d449943 ""
-  "template_robomech.tex" 1708725566 27765 9668cdb72e759477a6c52f8720145fed ""
+  "template_robomech.tex" 1708727038 27756 b7e596b7236d982bf948ecf3f59eb4a8 ""
   (generated)
   "out/template_robomech.log"
-  "out/template_robomech.aux"
   "out/template_robomech.dvi"
+  "out/template_robomech.aux"
