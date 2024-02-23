@@ -76,11 +76,11 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
 従来は，常に一定の速度（0.2 m/s）でロボットを走行させていたが，経路の一部で必要以上にデータを収集している
 おそれがある．
 収集したデータセットの順序は，各ステップ（0.2 s 程度）ごとに無作為に並び替えられ，その中の一部を学習に
-用いるため，割合の大きいデータは多く学習され，割合の小さいデータはあまり学習されていない可能性がある．
+用いるため，割合の多いデータは多く学習され，割合の少ないデータはあまり学習されていない可能性がある．
 経路の一部でも学習が不足すると，ロボットは経路追従できないため，データの収集密度を改善し，
 学習に用いられるデータの偏りを少なくすることが望まれる．\\
 \hspace*{1zw}これを踏まえ，本稿では，まず従来手法における経路追従失敗の一例を取り上げ，
-その要因がデータセットの不均衡によるものであるかを調査する．
+その要因がデータセットの不均衡によるものであるかを明らかにする．
 そのうえで，ロボットの並進速度を教師データの値に応じて可変にすることで，データセットの
 収集密度を調整し，学習を効率化する手法を提案する．
 なお，このような学習を効率化する手法は，これまでに本研究グループでもいくつか提案されている．
@@ -112,6 +112,8 @@ In addition, we proposed a new method of collecting teacher data to reinforce th
    \label{fig:1}
 \end{figure}
 
+\newpage
+
 \begin{figure}[h!]
   \centering
    \includegraphics[height=43mm]{pdf/network.pdf}
@@ -137,7 +139,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 右のカメラには目標角速度に 0.2 rad/s を足した値を教師データとする．
 これにより，データの量を増やすことや，過学習を防ぐ効果が期待される．
 ただし，旋回時（0.1 rad/s 以上）には，中央のカメラのみを使用する．
-ロボットのモータを制御するモジュールは，ROS の navigation パッケージから出力される
+ロボットのモータを制御するモジュールは，ROS  navigation パッケージから出力される
 角速度と，学習器から出力される角速度の 2つで構成されており，この 2つを切り替えることが可能である．
 学習器の出力をベースに走行すると，学習ができていない部分でロボットは目標経路から外れることになるため，
 目標経路へ復帰する行動をより効率的に収集できる．
@@ -154,7 +156,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
   \centering
   \caption{Yaw angular velocity offset per camera}
   \label{table:1}
-    \scalebox{0.91}[0.91]{
+    \scalebox{0.90}[0.90]{
     \begin{tabular}{|l||l|}
       \hline
       Cameras & Yaw angular velocity offset (rad/s)\\
@@ -196,23 +198,27 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 これにより，従来は一定のステップ数を用いていた訓練を，訓練の結果に応じて適切なステップ数で打ち切る．
 ただし，経路の一部でも DOL が少ないと経路追従できないため，DOL の割合は経路全体に対して
 ではなく，経路を分割して算出することが望ましい．今井らは，DOL の算出を各経由点間で行っていたが，
-経由点の置き方はヒューリスティックに決定されるため，公平な算出方法とはいえない．
+経由点の配置はヒューリスティックに決定されるため，公平な算出方法とはいえない．
 DOL の公平な算出方法については今後の課題とし，本稿では議論しないこととする．
 以降，本手法を従来手法と呼ぶこととする．
 
 \begin{figure}[h!]
   \centering
    \includegraphics[height=47mm]{./png/moderu.png}
-   \caption{Method to terminate training based on  evaluation}
+   \caption{Method to terminate training}
    \label{fig:5}
 \end{figure}
 
-\section{従来手法を用いた経路追従失敗の要因調査}
+\newpage
+
+\section{従来手法を用いた経路追従の失敗要因の解析}
 従来手法では，すべての経由点間で DOL の割合が 33 ％以上 であれば，99％経路追従に成功する
 ことが確認されている\cite{imai2}．
 ただし，訓練を打ち切る基準を満たしていても経路追従に失敗する例がある．
-失敗の大きな要因としては，データセットの不均衡が考えられる．
-そこで，再現実験を行い，それによって得た経路追従失敗の一例から要因を調査する．
+失敗の要因としては，データセットの不均衡が考えられる．
+各経由点間で基準を満たしても，すべての経由点間で基準を満たすまでは学習が継続されるため，
+割合の多いデータが多く学習されることで，モデルのパラメータが偏る可能性がある．
+そこで，再現実験を行い，それによって得た経路追従失敗の一例から要因を解析する．
 
 \subsection{実験装置}
 実験はシミュレータで行う．シミュレータには Gazebo\cite{gazebo}，環境には Willow Garage を用いた．
@@ -227,31 +233,31 @@ DOL の公平な算出方法については今後の課題とし，本稿では�
 図の赤で示した部分は，先行研究において経路追従に多く失敗した地点であることを意味する．
 ただし，ロボットは位置情報は学習せず，従来と同様に画像から角速度のみを予測する．
 学習後は，視覚に基づく経路追従で，経路を 1 周できるか確認する．
-壁に衝突することなくコースを 1 周できれば経路追従に成功したと判断する．
+壁に衝突することなく 1 周できれば経路追従に成功したと判断する．
 実験は，経路追従の失敗例を確認するまで行う．
-その後，経路追従失敗時のデータを用いて失敗の要因を調査する.
+その後，経路追従失敗時のデータを用いて失敗の要因を解析する.
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=44mm]{./png/location.png}
+   \includegraphics[height=40mm]{./png/location.png}
    \caption{Waypoints used in the experiment}
    \label{fig:6}
 \end{figure}
 
 \subsection{実験結果}
-経路追従失敗の一例を\figref{fig:7}に示す．ロボットは，左下の曲がり角を曲がりきれず，壁に衝突した．
-この地点は，\figref{fig:6}の 9 番に該当する．さらに，収集したデータセットの割合を\figref{fig:8}，
+経路追従失敗の一例を\figref{fig:7}に示す．ロボットは，左下の曲がり角で壁に衝突した．
+この地点は，\figref{fig:6}の 9 番に該当する．ここで，収集したデータセットの割合を\figref{fig:8}，
 学習に用いられたデータセットの割合を\figref{fig:9}に示す．
-\figref{fig:8}では，経路追従に失敗した地点である 9 番のデータセットがあまり収集されていないことがわかる．
-\figref{fig:9}も同様に，9 番のデータセットがあまり学習に用いられていないことがわかる．
-これらの結果から，収集したデータセットの割合と学習に用いられるデータセットの割合は，ほぼ比例関係に
-あると考えられる．そのため，一部でもデータセットの割合が少ないと経路追従に失敗するといえる．
-
+\figref{fig:8}より，経路追従に失敗した地点である 9 番のデータセットが他の地点と比べて少ないことがわかる．
+また，\figref{fig:9}より，0 番や 1 番など，直線部のデータが多く学習され，9 番のデータセットがあまり学習
+されていないことがわかる．
+このように，収集したデータセットに偏りがあると，学習されるデータセットも偏る．
+これらの結果から，経路追従の失敗要因はデータセットの不均衡によるものであるといえる．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=37mm]{./png/failed.png}
-   \caption{The end-to-end learning method}
+   \includegraphics[height=30.3mm]{./png/failed.png}
+   \caption{Robot trajectory in the experiment}
    \label{fig:7}
 \end{figure}
 
@@ -259,58 +265,67 @@ DOL の公平な算出方法については今後の課題とし，本稿では�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/set2.png}
-   \caption{The end-to-end learning method}
+   \includegraphics[height=32.8mm]{./png/set2.png}
+   \caption{Precentage of dataset collected}
    \label{fig:8}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/gaku2.png}
-   \caption{The end-to-end learning method}
+   \includegraphics[height=32.8mm]{./png/gaku2.png}
+   \caption{Precentage of dataset used for training}
    \label{fig:9}
 \end{figure}
 
 
 \section{提案手法}
-4章の結果から，経路追従失敗の要因がデータセットの不均衡によるものであることが明らかになった．
+4章の結果から，経路追従失敗の要因はデータセットの不均衡によるものであることが確認された．
+よって，データセットの収集密度を調整する手法を提案する．
+\figref{fig:10}に提案手法を示す．従来手法では，学習時のロボットの並進速度は常に一定（0.2 m/s）
+であったが，教師データとなる ROS navigation パッケージの目標角速度の値に応じて
+ロボットの並進速度を可変にする仕組みを追加している．具体的には，目標角速度の絶対値が 0.1 rad/s 未満
+であれば，ロボットの並進速度を従来の2倍（0.4 m/s）とし，0.1 rad/s 以上であれば，従来と同じ（0.2 m/s）
+とする．なお，0.1 rad/s という値は，3つのカメラを用いるしきい値に由来する．
+これにより，経路内の直線部などのデータを必要以上に収集することを防ぐ効果が期待される．
+また，データセットの不均衡が改善されることで，訓練打ち切りの指標を比較的早い段階で満たすことが
+できると考えられる．
 
-提案手法について述べる．あああああああああああああああああ
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, scale=0.33]{./png/a.png}
-    \subcaption{Path following method}
+    \subcaption{Not change linear velocity}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
     \includegraphics[keepaspectratio, scale=0.33]{./png/b.png}
-    \subcaption{Using learning machine output method}
+    \subcaption{Change linear velocity}
   \end{minipage}
-  \caption{Number of return to path}
+  \caption{Proposed method}
+  \label{fig:10}
 \end{figure}
 
-% \newpage
 
 \section{提案手法を用いた実験}
-提案手法の有効性を検証するため，実験を行う．
 
 \subsection{実験装置，実験方法}
-実験装置や実験方法は 4章と同様であるが，失敗の有無に
-かかわらず，100 回実験する．経路追従の成功率と，訓練打ち切りステップ数，データセットの観点から
-従来手法と比較し，有効性を評価する．
+提案手法の有効性を検証するため，実験を行う．
+実験装置や実験方法は 4章と同様であるが，失敗の有無にかかわらず，100 回実験する．
+経路追従の成功率と訓練打ち切りステップ数，データセットの割合から提案手法の有効性を評価する．
 
-\subsection{経路追従の成功率}
-あああああああああああああああああああああああああああああああああ
+\subsection{実験結果}
+\subsubsection{経路追従の成功率}
+\tabref{table:2}に経路追従の結果を示す．
+結果的に，提案手法を用いても，従来手法と経路追従の成功率は変わらなかった．
+ちなみに失敗した 1 回は，4.3節の\figref{fig:7}と同じ場所であった．
 
-
+\newpage
 
 \begin{table}[h!]
   \centering
-  \caption{Number of successes}
+  \caption{Number of successes in experiments}
   \label{table:2}
-  \vspace*{0.5mm}
     \scalebox{0.90}[0.90] {
     \begin{tabular}{|l||c|}
       \hline
@@ -323,9 +338,11 @@ DOL の公平な算出方法については今後の課題とし，本稿では�
     \end{tabular} }
 \end{table}
 
-\subsection{訓練打ち切りステップ数}
-あああああああああああああああああああああああああああああああああああああ
-
+\subsubsection{訓練打ち切りステップ数}
+\figref{fig:11}に，訓練打ち切りステップ数の分布を示す．
+結果的に，提案手法を用いた方が訓練打ち切りの指標を早くに満たすことができるといえる．
+ちなみに，従来手法の平均ステップ数は約 6262ステップ，提案手法の平均ステップ数は
+約 4742ステップであり，平均で約 1500ステップ（約5分）の訓練時間を短縮できた．
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
@@ -338,27 +355,32 @@ DOL の公平な算出方法については今後の課題とし，本稿では�
     \includegraphics[keepaspectratio, scale=0.273]{./png/p.png}
     \subcaption*{\hspace*{2.5zw}(b) Proposed method}
   \end{minipage}
-  \caption{Number of return to path}
+  \caption{Distribution of the number of steps terminated}
    \label{fig:11}
 \end{figure}
 
 
-\subsection{収集および学習したデータセット}
-ああああああああああああああああああああああああ
-
+\subsubsection{収集および学習したデータセットの割合}
+\figref{fig:12}に収集したデータセットの割合，\figref{fig:13}に学習に用いられたデータセットの割合を示す．
+これらは，従来手法と提案手法で成功した 10 回ずつの結果を平均したものである．
+\figref{fig:12}，\figref{fig:13}ともに，提案手法では 0 番や 1番など，直線部の割合が少なくなり，
+2 番や 9 番など，曲がり角周辺の割合が多くなったことがわかる．
+この結果から，収集するデータセットの偏りを改善したことで，
+学習に用いられるデータセットの偏りも改善することができたといえる．
+また，それにより学習を効率化できたといえる．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=37mm]{./png/dataset_pro2.png}
-   \caption{The end-to-end learning method}
-  %  \label{fig:2}
+   \includegraphics[height=33mm]{./png/dataset_pro2.png}
+   \caption{Precentage of dataset collected}
+   \label{fig:12}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=37mm]{./png/gaku_pro2.png}
-   \caption{The end-to-end learning method}
-  %  \label{fig:2}
+   \includegraphics[height=33mm]{./png/gaku_pro2.png}
+   \caption{Precentage of dataset used for training}
+   \label{fig:13}
 \end{figure}
 
 \newpage
@@ -370,9 +392,12 @@ DOL の公平な算出方法については今後の課題とし，本稿では�
 し，学習を効率化する手法を提案した．その後，シミュレータでの実験により提案手法の有効性を検証した．
 結果的に，提案手法は従来手法に比べて，データの不均衡を改善し，訓練打ち切りの指標を
 早くに満たすことができる傾向が見られた．ただし，従来手法と提案手法で経路追従の成功率は
-変わらなかったため，失敗の要因は，データセットの不均衡以外にも存在する可能性がある．
+変わらなかったため，失敗の要因はデータセットの不均衡以外にも存在する可能性がある．もしくは，
+データセットの不均衡をさらに改善する手法が必要であると考えられる．
 これについては，今後の課題とする．
 訓練を打ち切る指標を早く満たすことができるという点では，提案手法は有効であることが確認された．\\
+
+\vspace*{0.5zh}
 
 \footnotesize
 \begin{thebibliography}{99}
