@@ -19,9 +19,9 @@
 \makeatletter
 \title{視覚と行動のend-to-end学習により\\経路追従行動をオンラインで模倣する手法の提案}
 {― データセット収集密度の動的調整による学習の効率化 ―}
-{A Proposal for an Online Imitation Method of
-Path-tracking\\ Behavior by End-to-end Learning of Vision and Action}
-{- Efficiency Improvement of Learning by Dynamic Adjustment of Dataset Collection Density -}
+{A proposal for an online imitation method of
+path-tracking\\ behavior by end-to-end learning of vision and action}
+{- Efficiency improvement of learning by dynamic adjustment of dataset collection density -}
 
 \author{
 \begin{tabular}{c}
@@ -49,15 +49,13 @@ Our objective is to diversify the navigation methods in autonomous mobile robots
 
 \small
 \section{緒言}
-本研究グループは，従来からカメラ画像とロボットの角速度を end-to-end 学習することで，経路追従する手法を
-提案し，その有効性を検証してきた\cite{okada}\cite{okada2}\cite{kiyooka}．
-これには，移動ロボットのナビゲーション手段を複数化するというねらいがある．
-本手法は，地図に基づく経路追従行動を，画像を入力とする行動に模倣する．
-地図に基づく経路追従とは，あらかじめ作成した地図と LiDAR，オドメトリなどを用いて，自己位置推定，
-経路計画，制御などの複数のタスクを実行し，経路追従する方法である．
-本手法を用いることで，ロボットは地図に基づく経路追従と同じ行動を，画像のみで行えるようになる．
-よって，地図に基づく経路追従と画像に基づく経路追従の 2 つのナビゲーション手段を獲得できる．
-これらを状況に応じて高い信頼性が見込まれる方を選択することで，経路追従を継続できる可能性が高まる．\\
+本研究グループは，移動ロボットにおけるナビゲーション手段の複数化を目標としている．その目標を達成するため，
+従来からカメラ画像とロボットの角速度を end-to-end 学習することで，経路追従する手法を提案し，その有効性を
+検証してきた\cite{okada}\cite{okada2}\cite{kiyooka}．
+本手法は，複数のセンサと地図を入力として生成した行動を，画像を入力とする行動に模倣する．これによりロボット
+は，複数のセンサと地図を使用した時と同じ行動を，画像のみで行えるようになる．よって，地図に基づく経路追従と
+画像に基づく経路追従の 2 つのナビゲーション手段を獲得できる．これらを状況に応じて高い信頼性が見込まれる方
+を選択することで，経路追従を継続できる可能性が高まる．\\
 \hspace*{1zw}本研究と同様に，カメラ画像を入力として，end-to-end 学習により経路追従する手法は，いくつか
 提案されている．
 例えば，Muller らは，人のコントローラ操作と画像を end-to-end 学習することで，オフロード環境で障害物を
@@ -67,50 +65,69 @@ Our objective is to diversify the navigation methods in autonomous mobile robots
 手法を提案した\cite{Bojarski}．
 これらの手法はすべて人の操作を教師データとしているのに対し，本手法はルールベースの制御器の出力である
 角速度を教師データとしている．そのため，データセットの収集に人の操作が不要である．
-それに加えて，ロボットが常に目標経路に復帰する行動を収集できるため，人の操作を教師データと
-する場合よりも，経路追従を継続しやすいことが確認されている\cite{imai}．\\
-\hspace*{1zw}ここで，本手法はロボットを走行させながら，各ステップ（0.2 s） ごとにデータセットを収集し，
-それを用いて学習するが，データセットを収集する密度に関してはこれまで議論されていない．
-従来は，ロボットの並進速度は常に一定（0.2 m/s）としており，目標経路に対して，
-常に同じ密度でデータセットを収集している．
-しかし，目標経路の多くを占める直線的な経路では，過剰にデータを収集しているおそれがある．
-収集したデータセットは，各ステップごとに無作為に取り出され，それを学習に
-用いるため，割合の多いデータは多く学習され，割合の少ないデータはあまり学習されていない．
-つまり，データの割合が少ない部分でも経路追従行動を得るには，多くの訓練時間を要する．
-よって，収集および学習されるデータの偏りを少なくし，学習を効率化することが望まれる．\\
-\hspace*{1zw}これを踏まえ，本稿では，まず従来手法における実験結果の一例を取り上げ，
-収集および学習されるデータセットに偏りがあるかを確認する．
-そのうえで，データセットの収集密度を調整し，学習を効率化するために，
-ロボットの並進速度を教師データの値に応じて可変にする手法を提案する．
-なお，学習を効率化する手法は，これまでに本研究グループでもいくつか提案されている．
+それに加えて，ロボットが目標経路に復帰する行動を収集できるため，経路追従の継続に有効であることが確認
+されている\cite{imai}．\\
+\hspace*{1zw}ここで，本手法はロボットを走行させながらデータセットを収集し，それを用いて学習するが，
+ロボットの並進速度に関してはこれまで議論されていない．
+従来は，常に一定の速度（0.2 m/s）でロボットを走行させていたが，経路の一部で必要以上にデータを収集している
+おそれがある．
+収集したデータセットの順序は，各ステップ（0.2 s 程度）ごとに無作為に並び替えられ，その中の一部を学習に
+用いるため，割合の多いデータは多く学習され，割合の少ないデータはあまり学習されていない可能性がある．
+経路の一部でも学習が不足すると，ロボットは経路追従できないため，データの収集密度を改善し，
+学習に用いられるデータの偏りを少なくすることが望まれる．\\
+\hspace*{1zw}これを踏まえ，本稿では，まず従来手法における経路追従失敗の一例を取り上げ，
+その要因がデータセットの不均衡によるものであるかを明らかにする．
+そのうえで，ロボットの並進速度を教師データの値に応じて可変にすることで，データセットの
+収集密度を調整し，学習を効率化する手法を提案する．
+なお，このような学習を効率化する手法は，これまでに本研究グループでもいくつか提案されている．
 例えば，藤原らは，オーバーサンプリングによりデータの不均衡を改善する手法を提案した\cite{fuji}．
 また，\CID{8705}橋らは，データを事前に収集し，オフラインで学習する手法を提案した\cite{takahashi}．
 さらに，今井らは，モデルの評価に基づき訓練を打ち切る手法を提案した\cite{imai2}．
-いずれの手法も訓練時間の短縮に成功しているが，ロボットの並進速度は常に一定としているため，
-本稿における提案手法とはアプローチが異なる．\\
+いずれの手法も訓練時間の短縮に成功しているが，本稿における提案手法とはアプローチが異なる．\\
 \hspace*{1zw}本稿では，今井らの手法を採用し，シミュレータで実験する．
 ロボットの並進速度を可変にする場合と，そうでない場合で結果を比較することにより，
 提案手法の有効性を検証する．
 
 
-\section{end-to-end 学習により経路追従行動を模倣する手法}
-本研究グループが従来から提案する手法について述べる．
-本手法は end-to-end 学習を用いて，地図に基づく経路追従行動を，視覚を入力とする行動にオンラインで模倣する．
-はじめに地図に基づく経路追従を模倣学習する手法について述べた後，訓練済みモデルを用いた視覚に基づく
-経路追従手法について述べる．
+\section{end-to-end学習により経路追従行動を模倣する手法}
+本研究グループが従来から提案する手法について述べる．本手法は，\figref{fig:1}に示すように，
+64×48にリサイズした画像を入力，ロボットの角速度を出力として， end-to-end で学習する．
+なお，一定時間（0.2 s 程度）ごとにデータセットを収集しつつ，学習するが，これを 1 ステップとしている．
+1 ステップにつき，画像と角速度をペアにしたデータセットの中から 8 個のデータを抽出し，それ用いて学習する．
+ただし，過学習を防ぐために，データセットの順序は 1 ステップごとに入れ替わる．
+よって，学習に用いられるデータは，毎回で異なる．
+ネットワークは \figref{fig:2} に示すように，
+左から順に，入力層 1 ，畳み込み層 3 ，全結合層 2 ，出力層 1 の全 7 層で構成される．
+また，本手法は，学習時と学習後でシステムが異なる．以下に，それぞれの構成を述べる．
+
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=15.5mm]{./pdf/deplearning1.pdf}
+   \caption{The end-to-end learning method}
+   \label{fig:1}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=43mm]{pdf/network.pdf}
+   \caption{Structure of network}
+   \label{fig:2}
+\end{figure}
+
 
 \subsection{地図に基づく経路追従の模倣学習}
-地図に基づく経路追従を模倣学習するシステムを\figref{fig:3}に示す．
+地図に基づく経路追従とは，あらかじめ作成した地図と LiDAR，オドメトリなどを用いて，
+自己位置推定，経路計画，制御などの複数のタスクを実行し，経路追従する方法である．
+ここで，地図に基づく経路追従を模倣学習するシステムを\figref{fig:3}に示す．
 学習時には，ルールベースの制御器となる ROS navigation パッケージ\cite{navigation}を用いて，ロボットは
-自律移動する．それと同時に，64$×$48に リサイズした画像と ROS navigation パッケージから出力される
+自律移動する．それと同時に，画像と ROS navigation パッケージから出力される
 ヨー方向の目標角速度をペアにしたデータセットを収集し，end-to-end で学習する．
 ROS navigation パッケージは，並進速度と角速度を出力するが，角速度のみを教師データとし，
-並進速度は常に一定（0.2 m/s）としている．
-データセットの収集と学習は一定時間（0.2 s）ごとに繰り返すが，これを 1ステップとしており，
-1 ステップにつき，収集したデータセットの中から 8 個のデータを取り出して学習する．
-なお，学習には，効率化の面から Experience Replay\cite{Replay}を採用している．
-そのため，学習に用いられるデータは毎回のステップで異なる．
-また，他の研究\cite{Moridian}\cite{Bojarski}に倣い，データセットの収集には 3つのカメラ（左・中央・右）
+並進速度は常に一定（0.2 m/s）とする．
+なお，他の研究\cite{Moridian}\cite{Bojarski}に倣い，データセットの収集には 3つのカメラ（左・中央・右）
 を用いる．
 この時，\tabref{table:1}のように，左右のカメラ画像に対応する目標角速度には，
 それぞれ目標経路に戻るようにオフセットを加える．
@@ -122,24 +139,20 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 角速度と，学習器から出力される角速度の 2つで構成されており，この 2つを切り替えることが可能である．
 学習器の出力をベースに走行すると，学習ができていない部分でロボットは目標経路から外れることになるため，
 目標経路へ復帰する行動をより効率的に収集できる．
-ネットワークは，\figref{fig:2}に示すように，
-左から順に，入力層 1，畳み込み層 3，全結合層 2，出力層 1 の全 7 層で構成されている．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=54mm]{./png/learn.png}
+   \includegraphics[height=50mm]{./png/learn.png}
    \caption{Method to imitate path-tracking behavior}
    \label{fig:3}
 \end{figure}
 
 
-
-
 \begin{table}[h!]
   \centering
-  \caption{Yaw angular velocity offset}
+  \caption{Yaw angular velocity offset per camera}
   \label{table:1}
-    \scalebox{0.96}[0.96]{
+    \scalebox{0.90}[0.90]{
     \begin{tabular}{|l||l|}
       \hline
       Cameras & Yaw angular velocity offset (rad/s)\\
@@ -153,18 +166,6 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
     \end{tabular} }
 \end{table}
 
-\vspace*{1zh}
-
-\begin{figure}[h!]
-  \centering
-   \includegraphics[height=43mm]{pdf/network.pdf}
-   \caption{Structure of network}
-   \label{fig:2}
-\end{figure}
-
-
-
-
 \subsection{訓練済みモデルを用いた視覚に基づく経路追従}
 学習が終了したら，訓練済みモデルを用いて，経路追従できるかを確認する．
 このときのシステムを\figref{fig:4}に示す．
@@ -177,7 +178,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=53mm]{./png/afterlearn.png}
+   \includegraphics[height=49mm]{./png/afterlearn.png}
    \caption{Vision-based path-tracking using learned model}
    \label{fig:4}
 \end{figure}
@@ -192,27 +193,28 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 データセットを収集しつつ，学習し， DOL の割合が一定値を超えたところで訓練を打ち切る．
 これにより，従来は一定のステップ数を用いていた訓練を，訓練の結果に応じて適切なステップ数で打ち切る．
 ただし，経路の一部でも DOL が少ないと経路追従できないため，DOL の割合は経路全体に対して
-ではなく，経路を分割して算出する．
+ではなく，経路を分割して算出することが望ましい．今井らは，DOL の算出を各経由点間で行っていたが，
+経由点の配置はヒューリスティックに決定されるため，公平な算出方法とはいえない．
+DOL の公平な算出方法については今後の課題とし，本稿では議論しないこととする．
 以降，本手法を従来手法と呼ぶこととする．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=48mm]{./png/moderu.png}
+   \includegraphics[height=47mm]{./png/moderu.png}
    \caption{Method to terminate training}
    \label{fig:5}
 \end{figure}
 
+\newpage
 
-
-\section{データセットの偏りの確認}
-従来手法では，すべての経由点間でDOLの割合が 33％以上であれば，99％経路追従に成功する
-様子が見られた\cite{imai2}．
-ただし，目標経路に対して，常に同じ密度でデータセットを収集しているため，
-目標経路の多くを占める直線的な経路では，過剰にデータを収集しているおそれがある．
-経路の一部でも極端にデータの割合が多いと，割合の少ないデータはあまり学習されないため，
-訓練打ち切りの指標を満たすのに多くの時間を要する．
-そこで，再現実験を行い，それによって得た結果の一例から，収集および学習されるデータセットに偏りがあるかを
-確認する．
+\section{従来手法を用いた経路追従の失敗要因の解析}
+従来手法では，すべての経由点間で DOL の割合が 33 ％以上 であれば，99％経路追従に成功する
+ことが確認されている\cite{imai2}．
+ただし，訓練を打ち切る基準を満たしていても経路追従に失敗する例がある．
+失敗の要因としては，データセットの不均衡が考えられる．
+各経由点間で基準を満たしても，すべての経由点間で基準を満たすまでは学習が継続されるため，
+割合の多いデータが多く学習されることで，モデルのパラメータが偏る可能性がある．
+そこで，再現実験を行い，それによって得た経路追従失敗の一例から要因を解析する．
 
 \subsection{実験装置}
 実験はシミュレータで行う．シミュレータには Gazebo\cite{gazebo}，環境には Willow Garage を用いた．
@@ -226,66 +228,75 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 各経由点間に位置情報を加えたデータセットを収集する．
 図の赤で示した部分は，先行研究において経路追従に多く失敗した地点であることを意味する．
 ただし，ロボットは位置情報は学習せず，従来と同様に画像から角速度のみを予測する．
-学習後は，ロボットが収集および学習したデータセットの割合を可視化することで，
-偏りがあるかを確認する．
+学習後は，視覚に基づく経路追従で，経路を 1 周できるか確認する．
+壁に衝突することなく 1 周できれば経路追従に成功したと判断する．
+実験は，経路追従の失敗例を確認するまで行う．
+その後，経路追従失敗時のデータを用いて失敗の要因を解析する.
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=43mm]{./png/location.png}
+   \includegraphics[height=40mm]{./png/location.png}
    \caption{Waypoints used in the experiment}
    \label{fig:6}
 \end{figure}
 
 \subsection{実験結果}
-\figref{fig:8}に収集したデータセットの割合，\figref{fig:9}に学習に用いられたデータセットの割合を示す．
-\figref{fig:8}より，先行研究で経路追従に失敗した地点である 9 番のデータセットが
-他の地点と比べて少ないことがわかる．
-また，\figref{fig:9}より，0 番や 1 番などの直線的な経路のデータが多く学習され，
-9 番のデータセットがあまり学習されていないことがわかる．
-よって，目標経路の多くを占める直線的な経路では過剰にデータを収集しており，その結果，割合の
-少ないデータがあまり学習されていないため，学習は効率的でないといえる．
-これらの結果から，収集および学習されるデータセットには偏りがあることが一例ではあるが確認された．
+経路追従失敗の一例を\figref{fig:7}に示す．ロボットは，左下の曲がり角で壁に衝突した．
+この地点は，\figref{fig:6}の 9 番に該当する．ここで，収集したデータセットの割合を\figref{fig:8}，
+学習に用いられたデータセットの割合を\figref{fig:9}に示す．
+\figref{fig:8}より，経路追従に失敗した地点である 9 番のデータセットが他の地点と比べて少ないことがわかる．
+また，\figref{fig:9}より，0 番や 1 番など，直線部のデータが多く学習され，9 番のデータセットがあまり学習
+されていないことがわかる．
+このように，収集したデータセットに偏りがあると，学習されるデータセットも偏る．
+これらの結果から，経路追従の失敗要因はデータセットの不均衡によるものであるといえる．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=33mm]{./png/set2.png}
+   \includegraphics[height=30.3mm]{./png/failed.png}
+   \caption{Robot trajectory in the experiment}
+   \label{fig:7}
+\end{figure}
+
+\newpage
+
+\begin{figure}[h!]
+  \centering
+   \includegraphics[height=32.8mm]{./png/set2.png}
    \caption{Precentage of dataset collected}
    \label{fig:8}
 \end{figure}
 
-
-
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=33mm]{./png/gaku2.png}
+   \includegraphics[height=32.8mm]{./png/gaku2.png}
    \caption{Precentage of dataset used for training}
    \label{fig:9}
 \end{figure}
 
 
 \section{提案手法}
-4章の結果から，収集および学習されるデータセットには偏りがある．
+4章の結果から，経路追従失敗の要因はデータセットの不均衡によるものであることが確認された．
 よって，データセットの収集密度を調整する手法を提案する．
 \figref{fig:10}に提案手法を示す．従来手法では，学習時のロボットの並進速度は常に一定（0.2 m/s）
 であったが，教師データとなる ROS navigation パッケージの目標角速度の値に応じて
 ロボットの並進速度を可変にする仕組みを追加している．具体的には，目標角速度の絶対値が 0.1 rad/s 未満
 であれば，ロボットの並進速度を従来の2倍（0.4 m/s）とし，0.1 rad/s 以上であれば，従来と同じ（0.2 m/s）
 とする．なお，0.1 rad/s という値は，3つのカメラを用いるしきい値に由来する．
-これにより，目標経路の多くを占める直線的な経路で過剰にデータを収集することを防ぐ効果が期待される．
-それに伴い，学習されるデータセットの偏りも改善されることで，訓練打ち切りの指標を比較的早い段階で満たす
-ことができると考えられる．
+これにより，経路内の直線部などのデータを必要以上に収集することを防ぐ効果が期待される．
+また，データセットの不均衡が改善されることで，訓練打ち切りの指標を比較的早い段階で満たすことが
+できると考えられる．
 
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.34]{./png/a2.png}
-    \subcaption{Low speed}
+    \includegraphics[keepaspectratio, scale=0.33]{./png/a.png}
+    \subcaption{Not change linear velocity}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.34]{./png/b.png}
-    \subcaption{High speed}
+    \includegraphics[keepaspectratio, scale=0.33]{./png/b.png}
+    \subcaption{Change linear velocity}
   \end{minipage}
   \caption{Proposed method}
   \label{fig:10}
@@ -296,23 +307,22 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \subsection{実験装置，実験方法}
 提案手法の有効性を検証するため，実験を行う．
-実験装置や実験方法は 4章と同様である．
-ただし，4章の実験とは異なり，学習後は訓練済みモデルを用いて経路追従できるかを確認する．
-壁に衝突することなく，学習した経路を 1周できれば成功とみなし，100 回実験する．
-経路追従の成功率と訓練打ち切りステップ数，収集および学習したデータセットの割合から
-提案手法の有効性を評価する．
+実験装置や実験方法は 4章と同様であるが，失敗の有無にかかわらず，100 回実験する．
+経路追従の成功率と訓練打ち切りステップ数，データセットの割合から提案手法の有効性を評価する．
 
 \subsection{実験結果}
 \subsubsection{経路追従の成功率}
 \tabref{table:2}に経路追従の結果を示す．
 結果的に，提案手法を用いても，従来手法と経路追従の成功率は変わらなかった．
-ちなみに失敗した地点は，4.2節の\figref{fig:6}の 9番であり，従来手法において失敗した地点と同じであった．
+ちなみに失敗した 1 回は，4.3節の\figref{fig:7}と同じ場所であった．
+
+\newpage
 
 \begin{table}[h!]
   \centering
   \caption{Number of successes in experiments}
   \label{table:2}
-    \scalebox{0.96}[0.96] {
+    \scalebox{0.90}[0.90] {
     \begin{tabular}{|l||c|}
       \hline
       Experiments & Number of successes \\
@@ -325,14 +335,10 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \end{table}
 
 \subsubsection{訓練打ち切りステップ数}
-\figref{fig:11}に手法ごとの 100回の訓練打ち切りステップ数の分布を示す．
-従来手法では，最短で 4000 から 6000 ステップの訓練を必要としたのに対し，提案手法では，
-最短で 2000 から 4000 ステップで訓練を終了しているものがある．
-つまり，提案手法を用いた方が訓練打ち切りの指標を早くに満たすことができるといえる．
+\figref{fig:11}に，訓練打ち切りステップ数の分布を示す．
+結果的に，提案手法を用いた方が訓練打ち切りの指標を早くに満たすことができるといえる．
 ちなみに，従来手法の平均ステップ数は約 6262ステップ，提案手法の平均ステップ数は
 約 4742ステップであり，平均で約 1500ステップ（約5分）の訓練時間を短縮できた．
-6.2.1 項の結果より，双方で経路追従の成功率は変わらないため，提案手法は経路追従の成功率を損なわずに
-訓練時間を短縮できるといえる．
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
@@ -353,37 +359,41 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \subsubsection{収集および学習したデータセットの割合}
 \figref{fig:12}に収集したデータセットの割合，\figref{fig:13}に学習に用いられたデータセットの割合を示す．
 これらは，従来手法と提案手法で成功した 10 回ずつの結果を平均したものである．
-\figref{fig:12}，\figref{fig:13}ともに，提案手法では 0 番や 1番など，目標経路の多くを占める直線的な経路
-のデータの割合が少なくなり，2 番や 9 番など，曲がり角周辺のデータの割合が多くなったことがわかる．
-つまり，データセットの収集密度が改善されたことで，学習に用いられるデータセットの偏りも改善することが
-できたといえる．また，それにより学習を効率化することができたといえる．
+\figref{fig:12}，\figref{fig:13}ともに，提案手法では 0 番や 1番など，直線部の割合が少なくなり，
+2 番や 9 番など，曲がり角周辺の割合が多くなったことがわかる．
+この結果から，収集するデータセットの偏りを改善したことで，
+学習に用いられるデータセットの偏りも改善することができたといえる．
+また，それにより学習を効率化できたといえる．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/dataset_pro2.png}
+   \includegraphics[height=33mm]{./png/dataset_pro2.png}
    \caption{Precentage of dataset collected}
    \label{fig:12}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/gaku_pro2.png}
+   \includegraphics[height=33mm]{./png/gaku_pro2.png}
    \caption{Precentage of dataset used for training}
    \label{fig:13}
 \end{figure}
 
-
+\newpage
 
 \section{結言}
-本稿では，従来から提案する経路追従行動の模倣手法における実験結果の一例を取り上げ，
-収集および学習されるデータセットには偏りがあることを一例ではあるが確認した．
-そのうえで，データセットの収集密度を調整し，学習を効率化するために，ロボットの並進速度を教師データの
-値に応じて可変にする手法を提案した．その後，シミュレータでの実験により提案手法の有効性を検証した．
-結果的に，提案手法は従来手法に比べて，データの収集密度を改善し，学習に用いられるデータの偏りを改善できた．
-それにより，訓練打ち切りの指標を早くに満たすことができる傾向が見られたため，
-学習を効率化するうえで有効であることが確認された．\\
+本稿では，従来から提案する経路追従行動の模倣手法における経路追従失敗の一例を取り上げ，
+その要因がデータセットの不均衡によるものであることを明らかにした．
+そのうえで，ロボットの並進速度を教師データの値に応じて可変にすることで，データセットの収集密度を調整
+し，学習を効率化する手法を提案した．その後，シミュレータでの実験により提案手法の有効性を検証した．
+結果的に，提案手法は従来手法に比べて，データの不均衡を改善し，訓練打ち切りの指標を
+早くに満たすことができる傾向が見られた．ただし，従来手法と提案手法で経路追従の成功率は
+変わらなかったため，失敗の要因はデータセットの不均衡以外にも存在する可能性がある．もしくは，
+データセットの不均衡をさらに改善する手法が必要であると考えられる．
+これについては，今後の課題とする．
+訓練を打ち切る指標を早く満たすことができるという点においては，提案手法は有効であることが確認された．\\
 
-\vspace*{0.3zh}
+\vspace*{0.5zh}
 
 \footnotesize
 \begin{thebibliography}{99}
@@ -448,9 +458,6 @@ Bojarski, Mariusz, \textit{et al}.,
 ros-planning, navigation リポジトリ\\
 https://github.com/ros-planning/navigation.\\
 ( 最終閲覧日 : \today )
-
-\bibitem{Replay}
-L. Lin, “Self-improving reactive agents based on reinforcement learning, planning and teaching”, Mach. Learn. 8, 293-321 (1992)
 
 \bibitem{gazebo}
 Nathan Koenig and Andrew Howard, “Design and use paradigms for gazebo, an

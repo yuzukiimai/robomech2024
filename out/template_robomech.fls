@@ -77,27 +77,29 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlgothr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/cidjmr2-h.tfm
-INPUT ./pdf/deplearning1.pdf
-INPUT extractbb -B cropbox -O ./pdf/deplearning1.pdf
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr6.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi9.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-h.tfm
 OUTPUT out/template_robomech.dvi
-INPUT pdf/network.pdf
-INPUT extractbb -B cropbox -O pdf/network.pdf
 INPUT ./png/learn.png
 INPUT extractbb -B cropbox -O ./png/learn.png
+INPUT pdf/network.pdf
+INPUT extractbb -B cropbox -O pdf/network.pdf
 INPUT ./png/afterlearn.png
 INPUT extractbb -B cropbox -O ./png/afterlearn.png
 INPUT ./png/moderu.png
 INPUT extractbb -B cropbox -O ./png/moderu.png
 INPUT ./png/location.png
 INPUT extractbb -B cropbox -O ./png/location.png
-INPUT ./png/failed.png
-INPUT extractbb -B cropbox -O ./png/failed.png
 INPUT ./png/set2.png
 INPUT extractbb -B cropbox -O ./png/set2.png
 INPUT ./png/gaku2.png
 INPUT extractbb -B cropbox -O ./png/gaku2.png
-INPUT ./png/a.png
-INPUT extractbb -B cropbox -O ./png/a.png
+INPUT ./png/a2.png
+INPUT extractbb -B cropbox -O ./png/a2.png
 INPUT ./png/b.png
 INPUT extractbb -B cropbox -O ./png/b.png
 INPUT ./png/c.png
