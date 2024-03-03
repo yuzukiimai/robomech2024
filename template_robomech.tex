@@ -104,12 +104,10 @@ Our objective is to diversify the navigation methods in autonomous mobile robots
 学習時には，ルールベースの制御器となる ROS navigation パッケージ\cite{navigation}を用いて，ロボットは
 自律移動する．それと同時に，64$×$48に リサイズした画像と ROS navigation パッケージから出力される
 ヨー方向の目標角速度をペアにしたデータセットを収集し，end-to-end で学習する．
-ROS navigation パッケージは，並進速度と角速度を出力するが，角速度のみを教師データとし，
-並進速度は常に一定（0.2 m/s）としている．
+ROS navigation パッケージは，並進速度と角速度を出力するが，角速度のみを教師データとしている．
 データセットの収集と学習は一定時間（0.2 s）ごとに繰り返すが，これを 1ステップとしており，
 1 ステップにつき，収集したデータセットの中から 8 個のデータを取り出して学習する．
-なお，学習には，効率化の面から Experience Replay\cite{Replay}を採用している．
-そのため，学習に用いられるデータは毎回のステップで異なる．
+学習には Experience Replay を採用している．
 また，他の研究\cite{Moridian}\cite{Bojarski}に倣い，データセットの収集には 3つのカメラ（左・中央・右）
 を用いる．
 この時，\tabref{table:1}のように，左右のカメラ画像に対応する目標角速度には，
@@ -119,15 +117,16 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 これにより，データの量を増やすことや，過学習を防ぐ効果が期待される．
 ただし，旋回時（0.1 rad/s 以上）には，中央のカメラのみを使用する．
 ロボットのモータを制御するモジュールは，ROS  navigation パッケージから出力される
-角速度と，学習器から出力される角速度の 2つで構成されており，この 2つを切り替えることが可能である．
-学習器の出力をベースに走行すると，学習ができていない部分でロボットは目標経路から外れることになるため，
+角速度と，学習器から出力される角速度の 2つがあり，切り替えることが可能である．
+岡田らの手法\cite{okada}に倣い，学習器の出力をベースに走行する．
+このようにすることで，学習が不足している部分で，ロボットは目標経路から外れることになるため，
 目標経路へ復帰する行動をより効率的に収集できる．
 ネットワークは，\figref{fig:2}に示すように，
 左から順に，入力層 1，畳み込み層 3，全結合層 2，出力層 1 の全 7 層で構成されている．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=54mm]{./png/learn.png}
+   \includegraphics[height=54mm]{./pdf/learn.pdf}
    \caption{Method to imitate path-tracking behavior}
    \label{fig:3}
 \end{figure}
@@ -153,11 +152,11 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
     \end{tabular} }
 \end{table}
 
-\vspace*{1zh}
+\vspace*{2zh}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=43mm]{pdf/network.pdf}
+   \includegraphics[height=44mm]{pdf/network.pdf}
    \caption{Structure of network}
    \label{fig:2}
 \end{figure}
@@ -169,15 +168,14 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 学習が終了したら，訓練済みモデルを用いて，経路追従できるかを確認する．
 このときのシステムを\figref{fig:4}に示す．
 ここでは，ROS の navigation パッケージからの出力は使用せずにロボットを制御する．
-地図に基づく経路追従の模倣学習時と同様に，画像を学習器に入力し，その推定結果をヨー方向の
-目標角速度としてロボットを自律移動させる．
+画像を学習器に入力し，その推定結果をヨー方向の目標角速度としてロボットを自律移動させる．
 ロボットのヨー方向の角速度には学習器の出力を用いるが，並進速度は常に一定 (0.2 m/s) とする．
 また，地図に基づく経路追従の模倣学習時には， 3 つのカメラ（左・中央・右）を用いたが，
 訓練済みモデルを用いた視覚に基づく経路追従時には， 3 つのカメラのうち，中央のカメラのみを使用する．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=53mm]{./png/afterlearn.png}
+   \includegraphics[height=53mm]{./pdf/afterlearn.pdf}
    \caption{Vision-based path-tracking using learned model}
    \label{fig:4}
 \end{figure}
@@ -197,7 +195,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=48mm]{./png/moderu.png}
+   \includegraphics[height=48mm]{./pdf/moderu.pdf}
    \caption{Method to terminate training}
    \label{fig:5}
 \end{figure}
@@ -211,8 +209,8 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 目標経路の多くを占める直線的な経路では，過剰にデータを収集しているおそれがある．
 経路の一部でも極端にデータの割合が多いと，割合の少ないデータはあまり学習されないため，
 訓練打ち切りの指標を満たすのに多くの時間を要する．
-そこで，再現実験を行い，それによって得た結果の一例から，収集および学習されるデータセットに偏りがあるかを
-確認する．
+そこで，前章で述べた学習を行い，それによって得た結果の一例から，収集および学習されるデータセットに
+偏りがあるかを確認する．
 
 \subsection{実験装置}
 実験はシミュレータで行う．シミュレータには Gazebo\cite{gazebo}，環境には Willow Garage を用いた．
@@ -231,7 +229,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=43mm]{./png/location.png}
+   \includegraphics[height=43mm]{./pdf/location.pdf}
    \caption{Waypoints used in the experiment}
    \label{fig:6}
 \end{figure}
@@ -248,7 +246,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=33mm]{./png/set2.png}
+   \includegraphics[height=33mm]{./pdf/set2.pdf}
    \caption{Precentage of dataset collected}
    \label{fig:8}
 \end{figure}
@@ -257,7 +255,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=33mm]{./png/gaku2.png}
+   \includegraphics[height=33mm]{./pdf/gaku2.pdf}
    \caption{Precentage of dataset used for training}
    \label{fig:9}
 \end{figure}
@@ -273,18 +271,18 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 とする．なお，0.1 rad/s という値は，3つのカメラを用いるしきい値に由来する．
 これにより，目標経路の多くを占める直線的な経路で過剰にデータを収集することを防ぐ効果が期待される．
 それに伴い，学習されるデータセットの偏りも改善されることで，訓練打ち切りの指標を比較的早い段階で満たす
-ことができると考えられる．
+ことが期待される．
 
 
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.34]{./png/a2.png}
+    \includegraphics[keepaspectratio, scale=0.34]{./pdf/a2.pdf}
     \subcaption{Low speed}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.34]{./png/b.png}
+    \includegraphics[keepaspectratio, scale=0.34]{./pdf/b.pdf}
     \subcaption{High speed}
   \end{minipage}
   \caption{Proposed method}
@@ -337,12 +335,12 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{figure}[htbp]
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.27]{./png/c.png}
+    \includegraphics[keepaspectratio, scale=0.27]{./pdf/c.pdf}
     \subcaption*{\hspace*{2.5zw}(a) Conventional method}
   \end{minipage}
   \begin{minipage}[t]{0.5\linewidth}
     \centering
-    \includegraphics[keepaspectratio, scale=0.273]{./png/p.png}
+    \includegraphics[keepaspectratio, scale=0.273]{./pdf/p.pdf}
     \subcaption*{\hspace*{2.5zw}(b) Proposed method}
   \end{minipage}
   \caption{Distribution of the number of steps terminated}
@@ -360,14 +358,14 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/dataset_pro2.png}
+   \includegraphics[height=35mm]{./pdf/dataset_pro2.pdf}
    \caption{Precentage of dataset collected}
    \label{fig:12}
 \end{figure}
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=35mm]{./png/gaku_pro2.png}
+   \includegraphics[height=35mm]{./pdf/gaku_pro2.pdf}
    \caption{Precentage of dataset used for training}
    \label{fig:13}
 \end{figure}
@@ -389,81 +387,48 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \begin{thebibliography}{99}
 
 \bibitem{okada}
-岡田眞也， 清岡優祐， 上田隆一， 林原靖男，“視覚と行動の end-
-to-end 学習により経路追従行動をオンラインで模倣する手法
-の提案”，計測自動制御学会 \textit{SI} 部門講演会 \textit{SICE-SI2020} 予稿
-集， pp.1148-1152, 2020.
+岡田眞也, 清岡優祐, 上田隆一, 林原靖男, “視覚と行動の end-to-end 学習により経路追従行動をオンラインで模倣する手法の提案”, 計測自動制御学会 \textit{SI} 部門講演会 \textit{SICE-SI2020} 予稿集, pp.1148-1152, 2020.
 
 \bibitem{okada2}
-岡田眞也, 清岡優祐, 春山健太, 上田隆一, 林原靖男, “視覚と
-行動の end-to-end 学習により経路追従行動 をオンラインで
-模倣する手法の提案 -経路追従行動の修正のためにデータセッ
-トを動的に追加する手法の検討-”, 計測自動制御学会 SI 部門
-講演会 SICE-SI2021 予稿集, pp.1066-1080, 2021.
+岡田眞也, 清岡優祐, 春山健太, 上田隆一, 林原靖男, “視覚と行動の end-to-end 学習により経路追従行動をオンラインで模倣する手法の提案 -経路追従行動の修正のためにデータセットを動的に追加する手法の検討-”, 計測自動制御学会 \textit{SI} 部門講演会 \textit{SICE-SI2021} 予稿集, pp.1066-1080, 2021.
 
 \bibitem{kiyooka}
-清岡優祐, 岡田眞也, 岩井一輝, 上田隆一, 林原靖男, “視覚と行動の end-
-to-end 学習により経路追従行動 をオンラインで模倣する手法の提案 -データセットと
-生成された経路追従行動の解析-”, 計測自動 制御学会 SI 部門講演会 SICE-SI2021 
-予稿集, pp.1071-1075, 2021.
+清岡優祐, 岡田眞也, 岩井一輝, 上田隆一, 林原靖男, “視覚と行動の end-to-end 学習により経路追従行動をオンラインで模倣する手法の提案 -データセットと生成された経路追従行動の解析-”, 計測自動制御学会 \textit{SI} 部門講演会 \textit{SICE-SI2021} 予稿集, pp.1071-1075, 2021.
 
 \bibitem{off_load}
-U. Muller, J. Ben, E. Cosatto, B. Flepp, and Y. Cun.
-“Off-Road Obstacle Avoidance through End-to-End Learning.”
-Advances in neural information processing systems,
-Vol. 18, 2005.
+U. Muller, J. Ben, E. Cosatto, B. Flepp, and Y. Cun, “Off-Road Obstacle Avoidance through End-to-End Learning”, \textit{Advances in neural information processing systems}, Vol. 18, 2005.
 
 \bibitem{Moridian}
-Moridian, Barzin, Anurag Kamal, and Nina Mahmoudian. 
-“Learning Navigation Tasks from Demonstration for Semi-autonomous Remote
-Operation of Mobile Robots.” 2018 IEEE International Symposium on
-Safety, Security, and Rescue Robotics (SSRR), pp.1-8, 2018.
+Moridian, Barzin, Anurag Kamal, and Nina Mahmoudian, “Learning Navigation Tasks from Demonstration for Semi-autonomous Remote Operation of Mobile Robots”, \textit{2018 IEEE International Symposium on Safety, Security, and Rescue Robotics (SSRR)}, pp.1-8, 2018.
 
 \bibitem{Bojarski}
-Bojarski, Mariusz, \textit{et al}.,
-“End to end learning for self-driving cars,” arXiv:1604.08316, 2016.
+Bojarski, Mariusz, \textit{et al}., “End to end learning for self-driving cars”, \textit{arXiv:1604.08316}, 2016.
 
 \bibitem{imai}
-今井悠月 , 清岡優祐 , 春山健太 , 上田隆一 , 林原靖男 . ” 視覚と行動の end-to-end 学習によ
-り経路追従行動をオンラインで模倣する手法の提案
-ー経路への復帰行動の解析と復帰
-行動を強化する教師データ収集法の検討ー . 日本機械学会ロボティクス・メカトロニクス
-講演会 ’23 予稿集 , 2P2-G05(2023).
+今井悠月, 清岡優祐, 春山健太, 上田隆一, 林原靖男, ”視覚と行動の end-to-end 学習により経路追従行動をオンラインで模倣する手法の提案 -経路への復帰行動の解析と復帰行動を強化する教師データ収集法の検討-”, 日本機械学会ロボティクス・メカトロニクス講演会'23 予稿集, 2P2-G05(2023).
 
 \bibitem{fuji}
-藤原柾，春山健太，馬場琉生，上田隆一，林原靖男，"視覚と行動のend-to-end 学習により経路追従行動を
-オンラインで模倣する手法の提案　実環境における経路選択機能の検証と学習時間の短縮化の検討"
-，日本機械学会ロボティクス・メカトロニクス講演会'23予稿集，2P2-G06(2023)
-
+藤原柾, 春山健太, 馬場琉生, 上田隆一, 林原靖男, "視覚と行動のend-to-end 学習により経路追従行動をオンラインで模倣する手法の提案 -実環境における経路選択機能の検証と学習時間の短縮化の検討", 日本機械学会ロボティクス・メカトロニクス講演会'23予稿集, 2P2-G06(2023)
 
 \bibitem{takahashi}
-\CID{8705}橋祐樹，白須和暉，藤原柾，上田隆一，林原靖男，"視覚と行動のend-to-end 学習による経路追従行動の模倣"，
-日本機械学会ロボティクス・メカトロニクス講演会'23予稿集，2P1-G07(2023)
+\CID{8705}橋祐樹, 白須和暉, 藤原柾, 上田隆一, 林原靖男, "視覚と行動のend-to-end 学習による経路追従行動の模倣", 日本機械学会ロボティクス・メカトロニクス講演会'23予稿集, 2P1-G07(2023)
 
 \bibitem{imai2}
-今井悠月，落合拓海，白須和暉，上田隆一，林原靖男，”視覚と行動のend-to-end 学習により経路追従行動を
-オンラインで模倣する手法の提案 モデルの評価に基づく訓練ステップ数の決定”，1B1-04，SI2023，(2023)
+今井悠月, 落合拓海, 白須和暉, 上田隆一, 林原靖男, ”視覚と行動のend-to-end 学習により経路追従行動をオンラインで模倣する手法の提案 モデルの評価に基づく訓練ステップ数の決定”, 1B1-04, \textit{SI2023}, (2023)
 
 \bibitem{navigation}
 ros-planning, navigation リポジトリ\\
 https://github.com/ros-planning/navigation.\\
 ( 最終閲覧日 : \today )
 
-\bibitem{Replay}
-L. Lin, “Self-improving reactive agents based on reinforcement learning, planning and teaching”, Mach. Learn. 8, 293-321 (1992)
-
 \bibitem{gazebo}
-Nathan Koenig and Andrew Howard, “Design and use paradigms for gazebo, an
-open-source multi-robot simulator,” \textit{2004 IEEE/RSJ International Conference
-on Intelligent Robots and Systems (IROS)}, Vol.3, pp.
-2149-2154, 2004.
+Nathan Koenig and Andrew Howard, “Design and use paradigms for gazebo, an open-source multi-robot simulator”, \textit{2004 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, Vol.3, pp.2149-2154, 2004.
 
 \bibitem{TurtleBot3}
-Erico Guizzo and Ackerman Evan, “The TurtleBot3 Teacher [Resources Hands On],
-” \textit{IEEE Spectrum}, Vol.54, pp.19-20, August 2017.
-
+Erico Guizzo and Ackerman Evan, “The TurtleBot3 Teacher [Resources Hands On]”, \textit{IEEE Spectrum}, Vol.54, pp.19-20, August 2017.
 
 \end{thebibliography}
+
 
 \normalsize
 \end{document}

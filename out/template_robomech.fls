@@ -84,32 +84,32 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy9.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmsy6.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-h.tfm
 OUTPUT out/template_robomech.dvi
-INPUT ./png/learn.png
-INPUT extractbb -B cropbox -O ./png/learn.png
+INPUT ./pdf/learn.pdf
+INPUT extractbb -B cropbox -O ./pdf/learn.pdf
 INPUT pdf/network.pdf
 INPUT extractbb -B cropbox -O pdf/network.pdf
-INPUT ./png/afterlearn.png
-INPUT extractbb -B cropbox -O ./png/afterlearn.png
-INPUT ./png/moderu.png
-INPUT extractbb -B cropbox -O ./png/moderu.png
-INPUT ./png/location.png
-INPUT extractbb -B cropbox -O ./png/location.png
-INPUT ./png/set2.png
-INPUT extractbb -B cropbox -O ./png/set2.png
-INPUT ./png/gaku2.png
-INPUT extractbb -B cropbox -O ./png/gaku2.png
-INPUT ./png/a2.png
-INPUT extractbb -B cropbox -O ./png/a2.png
-INPUT ./png/b.png
-INPUT extractbb -B cropbox -O ./png/b.png
-INPUT ./png/c.png
-INPUT extractbb -B cropbox -O ./png/c.png
-INPUT ./png/p.png
-INPUT extractbb -B cropbox -O ./png/p.png
-INPUT ./png/dataset_pro2.png
-INPUT extractbb -B cropbox -O ./png/dataset_pro2.png
-INPUT ./png/gaku_pro2.png
-INPUT extractbb -B cropbox -O ./png/gaku_pro2.png
+INPUT ./pdf/afterlearn.pdf
+INPUT extractbb -B cropbox -O ./pdf/afterlearn.pdf
+INPUT ./pdf/moderu.pdf
+INPUT extractbb -B cropbox -O ./pdf/moderu.pdf
+INPUT ./pdf/location.pdf
+INPUT extractbb -B cropbox -O ./pdf/location.pdf
+INPUT ./pdf/set2.pdf
+INPUT extractbb -B cropbox -O ./pdf/set2.pdf
+INPUT ./pdf/gaku2.pdf
+INPUT extractbb -B cropbox -O ./pdf/gaku2.pdf
+INPUT ./pdf/a2.pdf
+INPUT extractbb -B cropbox -O ./pdf/a2.pdf
+INPUT ./pdf/b.pdf
+INPUT extractbb -B cropbox -O ./pdf/b.pdf
+INPUT ./pdf/c.pdf
+INPUT extractbb -B cropbox -O ./pdf/c.pdf
+INPUT ./pdf/p.pdf
+INPUT extractbb -B cropbox -O ./pdf/p.pdf
+INPUT ./pdf/dataset_pro2.pdf
+INPUT extractbb -B cropbox -O ./pdf/dataset_pro2.pdf
+INPUT ./pdf/gaku_pro2.pdf
+INPUT extractbb -B cropbox -O ./pdf/gaku_pro2.pdf
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-v.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/japanese-otf/nmlminr-h.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmr8.tfm
