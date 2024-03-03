@@ -37,11 +37,11 @@ Path-tracking\\ Behavior by End-to-end Learning of Vision and Action}
 \makeatother
 
 \abstract{ \small 
-Our objective is to diversify the navigation methods in autonomous mobile robots. To achieve this, we have proposed a method that uses end-to-end learning of images and angular velocity to follow a path. This method involves collecting a dataset while the robot is in operation and using it for learning. However, the translational speed has not been discussed so far, and there is a possibility that data has been over-collected in some parts of the route. As a result, some data may not be learned, leading to a potential failure in path-following. Therefore, this paper first elucidates whether the cause of path-following failure is due to an imbalance in the dataset. Subsequently, we propose a method to adjust the data collection density by varying the translational speed of the robot, and we verify its effectiveness through experiments using a simulator.
+We have proposed a method for path-tracking by end-to-end learning of camera images and the target angular velocity of the robot. This is aimed at diversifying the navigation methods of autonomous mobile robots. This method involves collecting a dataset while the robot is in motion and using it for learning. However, there has been no discussion about the density of data collection, and the dataset is always collected at the same density. Therefore, there is a risk of collecting excessive data in some parts of the route. In light of this, this paper first checks whether there is a bias in the collected and learned dataset. Then, we propose a method to adjust the data collection density by varying the translational speed of the robot according to the value of the teacher data. The effectiveness of the proposed method is verified through experiments in a simulator.
 }
 
 \date{} % 日付を出力しない
-\keywords{Navigation,  Autonomous mobile robot,  End-to-end learning,  Dataset}
+\keywords{End-to-end learning, Navigation, Autonomous mobile robot, Dataset}
 
 \maketitle
 \thispagestyle{empty}
