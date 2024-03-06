@@ -37,11 +37,11 @@ Path-tracking\\ Behavior by End-to-end Learning of Vision and Action}
 \makeatother
 
 \abstract{ \small 
-We have proposed a method for path-tracking by end-to-end learning of camera images and the target angular velocity of the robot. This is aimed at diversifying the navigation methods of autonomous mobile robots. This method involves collecting a dataset while the robot is in motion and using it for learning. However, there has been no discussion about the density of data collection, and the dataset is always collected at the same density. Therefore, there is a risk of collecting excessive data in some parts of the route. In light of this, this paper first checks whether there is a bias in the collected and learned dataset. Then, we propose a method to adjust the data collection density by varying the translational speed of the robot according to the value of the teacher data. The effectiveness of the proposed method is verified through experiments in a simulator.
+We have proposed a method for path-tracking in autonomous mobile robots by end-to-end learning of camera images and the robot's target angular velocity. Our method aims to diversify the navigation methods for these robots. It involves collecting a dataset while the robot moves and using this for learning. However, the density of data collection has not been discussed, and the density is uniform. This may result in excessive data collection in certain route areas. Addressing this, we first check for any bias in the collected dataset. We then propose a method to adjust the data collection density by varying the robot's translational speed based on the training data. The effectiveness of our proposed method is confirmed through experiments in a simulator.
 }
 
 \date{} % 日付を出力しない
-\keywords{End-to-end learning, Navigation, Autonomous mobile robot, Dataset}
+\keywords{Autonomous mobile robot, End-to-end learning, Navigation, Dataset}
 
 \maketitle
 \thispagestyle{empty}
@@ -49,7 +49,7 @@ We have proposed a method for path-tracking by end-to-end learning of camera ima
 
 \small
 \section{緒言}
-本研究グループは，従来からカメラ画像とロボットの角速度を end-to-end 学習することで，経路追従する手法を
+本研究グループは，移動ロボットを対象に，従来からカメラ画像とロボットの角速度を end-to-end 学習することで，経路追従する手法を
 提案し，その有効性を検証してきた\cite{okada}\cite{okada2}\cite{kiyooka}．
 これには，移動ロボットのナビゲーション手段を複数化するというねらいがある．
 本手法は，地図に基づく経路追従行動を，画像を入力とする行動に模倣する．
@@ -219,17 +219,17 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 \subsection{実験方法}
 実験では，はじめに地図に基づく経路追従を模倣学習する．
 このとき，ロボットは\figref{fig:6}に示すような緑色の経由点を順次移動するが，
-経由点の配置は先行研究と同じである．
-ここで，どの地点で得られたデータがどの程度収集されたかを確認するため，
+経由点の配置は先行研究\cite{imai2}と同じである．
+ここで，各地点でデータがどの程度収集されたかを確認するため，
 各経由点間に位置情報を加えたデータセットを収集する．
-図の赤で示した部分は，先行研究において経路追従に多く失敗した地点であることを意味する．
+図の赤で示した部分は，先行研究において経路追従に多く失敗した地点である．
 ただし，ロボットは位置情報は学習せず，従来と同様に画像から角速度のみを予測する．
 学習後は，ロボットが収集および学習したデータセットの割合を可視化することで，
 偏りがあるかを確認する．
 
 \begin{figure}[h!]
   \centering
-   \includegraphics[height=43mm]{./pdf/location.pdf}
+   \includegraphics[height=40.5mm]{./pdf/location.pdf}
    \caption{Waypoints used in the experiment}
    \label{fig:6}
 \end{figure}
@@ -240,9 +240,10 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 他の地点と比べて少ないことがわかる．
 また，\figref{fig:9}より，0 番や 1 番などの直線的な経路のデータが多く学習され，
 9 番のデータセットがあまり学習されていないことがわかる．
-よって，目標経路の多くを占める直線的な経路では過剰にデータを収集しており，その結果，割合の
-少ないデータがあまり学習されていないため，学習は効率的でないといえる．
-これらの結果から，収集および学習されるデータセットには偏りがあることが一例ではあるが確認された．
+つまり，目標経路の多くを占める直線的な経路では過剰にデータを収集しており，その結果，割合の
+少ないデータがあまり学習されていない．そのため，経路全体で望む出力を得るための学習時間は長くなり，
+効率的でないといえる．
+以上から，収集および学習されるデータセットには偏りがあることが一例ではあるが確認された．
 
 \begin{figure}[h!]
   \centering
@@ -262,7 +263,7 @@ ROS navigation パッケージは，並進速度と角速度を出力するが�
 
 
 \section{提案手法}
-4章の結果から，収集および学習されるデータセットには偏りがある．
+4章の結果から，収集および学習されるデータセットには偏りがあることがわかった．
 よって，データセットの収集密度を調整する手法を提案する．
 \figref{fig:10}に提案手法を示す．従来手法では，学習時のロボットの並進速度は常に一定（0.2 m/s）
 であったが，教師データとなる ROS navigation パッケージの目標角速度の値に応じて

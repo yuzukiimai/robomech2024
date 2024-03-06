@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  3 MAR 2024 15:30
+This is e-pTeX, Version 3.14159265-p3.8.2-190908-2.6 (utf8.euc) (TeX Live 2019/Debian) (preloaded format=platex 2023.5.31)  6 MAR 2024 18:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -309,28 +309,24 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 264.
+(Font)              using `JY1/hmc/bx/n' instead on input line 265.
 
 File: ./pdf/a2.pdf Graphic file (type pdf)
 <./pdf/a2.pdf>
 File: ./pdf/b.pdf Graphic file (type pdf)
 <./pdf/b.pdf>
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 278--288
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 279--289
 [][] [] 
  []
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 293.
+(Font)              using `JY1/hmc/bx/n' instead on input line 294.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 295.
-
-
-LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 303.
+(Font)              using `JY1/hmc/bx/n' instead on input line 296.
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
@@ -338,7 +334,11 @@ LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 325.
+(Font)              using `JY1/hmc/bx/n' instead on input line 305.
+
+
+LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
+(Font)              using `JY1/hmc/bx/n' instead on input line 326.
 
 [3]
 File: ./pdf/c.pdf Graphic file (type pdf)
@@ -346,13 +346,13 @@ File: ./pdf/c.pdf Graphic file (type pdf)
 File: ./pdf/p.pdf Graphic file (type pdf)
 <./pdf/p.pdf>
 
-Overfull \hbox (2.22221pt too wide) in paragraph at lines 336--346
+Overfull \hbox (2.22221pt too wide) in paragraph at lines 337--347
 [][] [] 
  []
 
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 351.
+(Font)              using `JY1/hmc/bx/n' instead on input line 352.
 
 File: ./pdf/dataset_pro2.pdf Graphic file (type pdf)
 <./pdf/dataset_pro2.pdf>
@@ -360,26 +360,26 @@ File: ./pdf/gaku_pro2.pdf Graphic file (type pdf)
 <./pdf/gaku_pro2.pdf>
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 375.
+(Font)              using `JY1/hmc/bx/n' instead on input line 376.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 386.
+(Font)              scaled to size 7.69775pt on input line 387.
 LaTeX Font Info:    Font shape `JY1/hmc/m/n' will be
-(Font)              scaled to size 7.69775pt on input line 386.
+(Font)              scaled to size 7.69775pt on input line 387.
 
 LaTeX Font Warning: Font shape `JY1/hmc/b/n' undefined
-(Font)              using `JY1/hmc/bx/n' instead on input line 387.
+(Font)              using `JY1/hmc/bx/n' instead on input line 388.
 
 LaTeX Font Info:    Font shape `JT1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 390.
+(Font)              scaled to size 7.69775pt on input line 391.
 LaTeX Font Info:    Font shape `JY1/hmc/m/it' will be
-(Font)              scaled to size 7.69775pt on input line 390.
+(Font)              scaled to size 7.69775pt on input line 391.
 LaTeX Font Info:    Font shape `JT1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 414.
+(Font)              scaled to size 7.69775pt on input line 415.
 LaTeX Font Info:    Font shape `JY1/cidj/m/2' will be
-(Font)              scaled to size 7.69775pt on input line 414.
+(Font)              scaled to size 7.69775pt on input line 415.
 
-Underfull \hbox (badness 1242) in paragraph at lines 425--426
+Underfull \hbox (badness 1242) in paragraph at lines 426--427
 []\OT1/cmr/m/n/8 Nathan Koenig and An-drew Howard,  \JY1/hmc/m/it/8 “\OT1/cmr/m/n/8 De-sign and use
  []
 
@@ -395,6 +395,6 @@ Here is how much of TeX's memory you used:
  19826 multiletter control sequences out of 15000+600000
  545396 words of font info for 84 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 48i,14n,46p,925b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,14n,46p,812b,992s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on out/template_robomech.dvi (4 pages, 41380 bytes).
+Output written on out/template_robomech.dvi (4 pages, 41436 bytes).
